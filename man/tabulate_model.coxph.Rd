@@ -26,17 +26,17 @@ Converts parameters from a cox parametric hazards model
 into a usable table for publication purposes.
 }
 \examples{
-library(tibble)
 library(survival)
+library(dplyr)
 
-# coxph() Object
-coxph_data <- as_tibble(cgd)
+# Survival data
+data_lung <- lung \%>\%
+  as_tibble() \%>\%
+  mutate_at(vars(inst, status, sex), as.factor) \%>\%
+  mutate(status = case_when(status == 1 ~ 0, status == 2 ~ 1))
 
 tabulate_model(
-   fit = coxph(
-      Surv(tstart, tstop, status) ~ age + center + sex,
-      data = coxph_data
-   )
+  fit = coxph(Surv(time, status) ~ sex + meal.cal + inst, data = data_lung)
  )
 }
 \seealso{
