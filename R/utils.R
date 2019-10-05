@@ -1,4 +1,8 @@
-utils::globalVariables(c(':=', 'variable', 'level', 'subjects', 'events', 'estimate', 'conf.lower', 'conf.upper', 'p'))
+utils::globalVariables(c(
+  ':=', 'variable', 'level',
+  'subjects', 'events', 'estimate',
+  'conf.lower', 'conf.upper', 'p'
+))
 
 .format_table <- function(table, estimate, percent.sign, digits, p.digits) {
 
