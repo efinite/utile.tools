@@ -4,6 +4,7 @@ utils::globalVariables(c(':=', 'variable', 'level', 'subjects', 'events', 'estim
 
   # Identify reference rows
   ref_rows <- !is.na(table$level) & is.na(table$estimate)
+  estimate <- paste(estimate, '[95%CI]')
 
   # Transmute table
   table <-
@@ -28,10 +29,16 @@ utils::globalVariables(c(':=', 'variable', 'level', 'subjects', 'events', 'estim
             )
           )
         },
-        !!estimate := round(table$estimate, digits = digits),
-        `[95%CI]` = ifelse(
-          !is.na(table$conf.lower) & !is.na(table$conf.upper),
-          paste0('[', round(table$conf.lower, digits = digits), '-', round(table$conf.upper, digits = digits), ']'),
+        !!estimate := ifelse(
+          !is.na(table$estimate),
+          paste(
+            round(table$estimate, digits = digits),
+            ifelse(
+              !is.na(table$conf.lower) & !is.na(table$conf.upper),
+              paste0('[', round(table$conf.lower, digits = digits), '-', round(table$conf.upper, digits = digits), ']'),
+              ''
+            )
+          ),
           NA
         ),
         p = ifelse(
@@ -49,6 +56,3 @@ utils::globalVariables(c(':=', 'variable', 'level', 'subjects', 'events', 'estim
   # Replace NA's and return
   replace(table, is.na(table), '')
 }
-
-
-
