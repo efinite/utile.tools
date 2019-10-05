@@ -110,17 +110,17 @@ tabulate_model.default <- function(fit = NULL, format = NULL, percent.sign = NUL
 #' p-values are still rounded using 'digits'. Defaults to 4.
 #' @seealso \code{\link{tabulate_model}}
 #' @examples
-#' library(tibble)
 #' library(survival)
+#' library(dplyr)
 #'
-#' # coxph() Object
-#' coxph_data <- as_tibble(cgd)
+#' # Survival data
+#' data_lung <- lung %>%
+#'   as_tibble() %>%
+#'   mutate_at(vars(inst, status, sex), as.factor) %>%
+#'   mutate(status = case_when(status == 1 ~ 0, status == 2 ~ 1))
 #'
 #' tabulate_model(
-#'    fit = coxph(
-#'       Surv(tstart, tstop, status) ~ age + center + sex,
-#'       data = coxph_data
-#'    )
+#'   fit = coxph(Surv(time, status) ~ sex + meal.cal + inst, data = data_lung)
 #'  )
 #' @export
 tabulate_model.coxph <- function(fit, format = TRUE, percent.sign = TRUE, digits = 1, p.digits = 4) {
