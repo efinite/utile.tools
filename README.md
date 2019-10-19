@@ -25,4 +25,4 @@ A variety of tools for preparing and summarizing data for publication purposes. 
 - `test_factor()`: Returns a p-value from parametric or non-parametric testing of stratified categorical (factor) data. Supports parametric and non-parametric testing (see docs).
 
 ### > chunk_
-- `chunk_data_()`: Returns a factory function which returns chunks of a given data object with successive function calls.
+- `chunk_data_()`: Returns a factory function which returns chunks of a given data object (table, vector) with successive function calls.
