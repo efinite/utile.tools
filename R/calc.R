@@ -81,6 +81,6 @@ calc_chunks <- function(data = NULL, size = 10, reverse = FALSE) {
 
   # Calculate and return chunks
   if (!reverse) purrr::map(1:ceiling(item_cnt / size), ~ ((.x-1)*size+1):min(item_cnt, (.x*size)))
-  else purrr::map(1:ceiling(item_cnt / size), ~ (item_cnt-(.x-1)*size):max(1, item_cnt-(.x*size)-1))
+  else purrr::map(1:ceiling(item_cnt / size), ~ (item_cnt-(.x-1)*size):max(1, item_cnt-(.x*size)+1))
 
 }
