@@ -7,11 +7,11 @@
 paste_freq(count = NA, total = NA, percent.sign = TRUE, digits = 1)
 }
 \arguments{
-\item{count}{Required. Tibble, Column (logical), or Numeric. The numerator.
-Tibbles and columns are automatically tallied (nrow or sum(na.rm = TRUE)).}
+\item{count}{Optional. Tibble, Numeric, or Non-Numeric. The numerator.
+Tibbles and non-numeric data are automatically tallied (nrow or length).}
 
-\item{total}{Required. Tibble, Column, or Numeric. The denominator. Tibbles
-and columns are automatically tallied (nrow or sum(na.rm = TRUE)).}
+\item{total}{Optional. Tibble, Numeric, or Non-Numeric. The denominator.
+Tibbles and non-numeric data are automatically tallied (nrow or length).}
 
 \item{percent.sign}{Optional. Logical. Indicates percent sign should be printed
 for frequencies. Defaults to TRUE.}
