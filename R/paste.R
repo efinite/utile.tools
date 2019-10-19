@@ -21,8 +21,8 @@
 paste_freq <- function(count = NA, total = NA, percent.sign = TRUE, digits = 1) {
   if ('data.frame' %in% class(count)) count <- nrow(count)
   if ('data.frame' %in% class(total)) total <- nrow(total)
-  if (!all(is.numeric(count)) & is.vector(count)) count <- length(count)
-  if (!all(is.numeric(total)) & is.vector(total)) total <- length(total)
+  if (!all(is.numeric(count)) & is.vector(count) & !all(is.na(count))) count <- length(count)
+  if (!all(is.numeric(total)) & is.vector(total) & !all(is.na(count))) total <- length(total)
   purrr::map2_chr(
     count, total,
     function(x, y) {
