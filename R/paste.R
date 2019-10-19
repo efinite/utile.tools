@@ -1,10 +1,10 @@
 #' @title Paste Frequency
 #' @description Returns a human-readable frequency from count(able) data. Supports
 #' vectorized data (i.e. dplyr::mutate()).
-#' @param count Required. Tibble, Column (logical), or Numeric. The numerator.
-#' Tibbles and columns are automatically tallied (nrow or sum(na.rm = TRUE)).
-#' @param total Required. Tibble, Column, or Numeric. The denominator. Tibbles
-#' and columns are automatically tallied (nrow or sum(na.rm = TRUE)).
+#' @param count Optional. Tibble, Numeric, or Non-Numeric. The numerator.
+#' Tibbles and non-numeric data are automatically tallied (nrow or length).
+#' @param total Optional. Tibble, Numeric, or Non-Numeric. The denominator.
+#' Tibbles and non-numeric data are automatically tallied (nrow or length).
 #' @param percent.sign Optional. Logical. Indicates percent sign should be printed
 #' for frequencies. Defaults to TRUE.
 #' @param digits Optional. Integer. Number of digits to round to. Defaults to 1.
@@ -21,6 +21,8 @@
 paste_freq <- function(count = NA, total = NA, percent.sign = TRUE, digits = 1) {
   if ('data.frame' %in% class(count)) count <- nrow(count)
   if ('data.frame' %in% class(total)) total <- nrow(total)
+  if (!all(is.numeric(count)) & is.vector(count)) count <- length(count)
+  if (!all(is.numeric(total)) & is.vector(total)) total <- length(total)
   purrr::map2_chr(
     count, total,
     function(x, y) {
