@@ -45,7 +45,7 @@ paste_freq <- function(count = NA, total = NA, percent.sign = TRUE, digits = 1) 
 #' paste_median(mtcars$mpg)
 #' @export
 paste_median <- function(col = NA, less.than.one = FALSE, digits = 1) {
-  if (all(is.na(col))) NA
+  if (all(is.na(col)) | !all(is.numeric(col))) as.character(NA)
   else {
     col_median <- round(x = stats::median(col, na.rm = TRUE), digits = digits)
     if (round(col_median, digits = digits) == 0 & less.than.one) col_median <- '<1'
@@ -65,7 +65,7 @@ paste_median <- function(col = NA, less.than.one = FALSE, digits = 1) {
 #' paste_mean(mtcars$mpg)
 #' @export
 paste_mean <- function(col = NA, less.than.one = FALSE, digits = 1) {
-  if (all(is.na(col))) NA
+  if (all(is.na(col)) | !all(is.numeric(col))) as.character(NA)
   else {
     col_mean <- round(x = mean(col, na.rm = TRUE), digits = digits)
     if (round(col_mean, digits = digits) == 0 & less.than.one) col.mean <- '<1'
@@ -90,7 +90,7 @@ paste_mean <- function(col = NA, less.than.one = FALSE, digits = 1) {
 #' paste_efs(fit, c(1, 3, 5))
 #' @export
 paste_efs <- function(fit = NA, time = NA, percent.sign = TRUE, digits = 1) {
-  if (all(is.na(time)) | class(fit) != 'survfit') NA
+  if (all(is.na(time)) | class(fit) != 'survfit' | !all(is.numeric(time))) NA
   else {
     results <- summary(fit, times = time)
     estimate <- round(results$surv * 100, digits = digits)
