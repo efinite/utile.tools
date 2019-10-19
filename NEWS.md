@@ -1,6 +1,6 @@
 # utile.tools 0.2.2
 * Added `calc_chunks()` & `chunk_data_()`. Tools for breaking tibbles, data frames, and vectors into smaller, usable chunks of data.
-* Formatted tables created by `tabulate_model()` now have the point estimate and confidence interval in a single column to be more consistent with the output of `utile.tables::`
+* Formatted tables created with `tabulate_model()` now have the point estimate and confidence interval in a single column to be more consistent with the output of `utile.tables::`
 
 # utile.tools 0.2.1
 * `calc_duration()`: Added support for multiple calculations against a single timepoint.
