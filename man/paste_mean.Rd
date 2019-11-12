@@ -4,10 +4,10 @@
 \alias{paste_mean}
 \title{Paste Mean}
 \usage{
-paste_mean(col = NA, less.than.one = FALSE, digits = 1)
+paste_mean(x = NA, less.than.one = FALSE, digits = 1)
 }
 \arguments{
-\item{col}{Required. Vector/Column (numeric). Data to summarize.}
+\item{x}{Required. Numeric. Data to summarize.}
 
 \item{less.than.one}{Optional. Logical. Indicates a mean that rounds to 0 should
 be printed as <1. Defaults to FALSE (0).}

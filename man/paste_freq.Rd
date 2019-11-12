@@ -4,14 +4,16 @@
 \alias{paste_freq}
 \title{Paste Frequency}
 \usage{
-paste_freq(count = NA, total = NA, percent.sign = TRUE, digits = 1)
+paste_freq(num = NA, den = NA, percent.sign = TRUE, digits = 1)
 }
 \arguments{
-\item{count}{Optional. Tibble, Numeric, or Non-Numeric. The numerator.
+\item{num}{Optional. Tibble, Numeric, or Non-Numeric. The numerator.
 Tibbles and non-numeric data are automatically tallied (nrow or length).}
 
-\item{total}{Optional. Tibble, Numeric, or Non-Numeric. The denominator.
-Tibbles and non-numeric data are automatically tallied (nrow or length).}
+\item{den}{Optional. Tibble, Numeric, or Non-Numeric. The denominator.
+Tibbles and non-numeric data are automatically tallied (nrow or length). May use
+a single denominator for multiple numerators or one denominator for each
+numerator.}
 
 \item{percent.sign}{Optional. Logical. Indicates percent sign should be printed
 for frequencies. Defaults to TRUE.}
@@ -31,4 +33,10 @@ paste_freq(20, 100)
 # Tibble
 data_tibble <- tibble(column = c(1:100))
 paste_freq(data_tibble[1:20,], data_tibble)
+
+# Mixed data types
+paste_freq(20, data_tibble)
+
+# Single denominator for multiple numerators
+paste_freq(c(10,20,30), 100)
 }

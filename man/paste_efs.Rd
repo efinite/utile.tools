@@ -4,13 +4,13 @@
 \alias{paste_efs}
 \title{Paste Event-Free-Survival}
 \usage{
-paste_efs(fit = NA, time = NA, percent.sign = TRUE, digits = 1)
+paste_efs(fit = NA, times = NA, percent.sign = TRUE, digits = 1)
 }
 \arguments{
 \item{fit}{Required. survival::Surv() object. The time-to-event model of interest.}
 
-\item{time}{Required. Numeric. Indicates duration of time. Units are whatever was used to
-create the time-to-event model.}
+\item{times}{Required. Numeric. Indicates duration of time-points of interest.
+Units are whatever was used to create the time-to-event model.}
 
 \item{percent.sign}{Optional. Logical. Indicates percent sign should be printed
 for frequencies. Defaults to TRUE.}
