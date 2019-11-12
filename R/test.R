@@ -32,20 +32,29 @@ test_hypothesis <- function (x, y, parametric, digits, p.digits) {
   UseMethod('test_hypothesis')
 }
 
+
+# Default response
+#' @export
 test_hypothesis.default <- function (x, y, parametric, digits, p.digits) as.character(NA)
 
+
+# Numeric testing methods
+#' @export
 test_hypothesis.numeric <- function(x = NA, y = NA, parametric = FALSE, digits = 1, p.digits = 4) {
   unique_lvl <- length(unique(y[!is.na(x)]))
   if (is.factor(y) & unique_lvl >= 2) {
     pv <- if (unique_lvl == 2)
       if (parametric) stats::t.test(formula = x ~ y, alternative = 'two.sided')$p.value
       else stats::wilcox.test(x ~ y, alternative = 'two.sided')$p.value
-    else if (parametric) summary(aov(x ~ y))[[1]][[1,"Pr(>F)"]]
+    else if (parametric) summary(stats::aov(x ~ y))[[1]][[1,"Pr(>F)"]]
     else stats::kruskal.test(x ~ y)$p.value
     format.pval(pv = pv, digits = digits, eps = 0.0001, nsmall = p.digits, scientific = F)
   } else NA
 }
 
+
+# Categorical testing methods
+#' @export
 test_hypothesis.factor <- function(x = NA, y = NA, parametric = FALSE, digits = 1, p.digits = 4) {
   contTable <- table(x, y)
   contTable <- contTable[rowSums(contTable) > 0, colSums(contTable) > 0, drop = FALSE]
@@ -67,4 +76,6 @@ test_hypothesis.factor <- function(x = NA, y = NA, parametric = FALSE, digits = 
     format.pval(pv = pv, digits = digits, eps = 1e-04, nsmall = p.digits, scientific = F)
   } else NA
 }
+
+#' @export
 test_hypothesis.logical <- test_hypothesis.factor
