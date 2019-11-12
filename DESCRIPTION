@@ -1,5 +1,5 @@
 Package: utile.tools
-Version: 0.2.2
+Version: 0.2.3
 Title: Summarize Data for Publication
 Description: A variety of tools for preparing and summarizing data for publication purposes. Function verbs include 'tabulate' for creating usable tabulated data from models, 'paste' for generating human-readable statistics from a variety of summarizable data types, 'calc' for reliably calculating differences between data points, and 'test' for conducting simple statistical tests which return human-readable results.
 Authors@R: c(person('Eric', 'Finnesgard', email = 'finnesgard.eric@mayo.edu', role = c('aut', 'cre')))
