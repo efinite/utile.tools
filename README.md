@@ -21,7 +21,7 @@ A variety of tools for preparing and summarizing data for publication purposes. 
 - `calc_chunks()`: Returns mapped "chunk" indices for a data object given a specified chunk size (e.g. number of rows in a tibble).
 
 ### > test_
-- `test_hypothesis()`: Returns a p-value from parametric or non-parametric testing of stratified continuous or categorical data. Provides parametric and non-parametric testing options (see docs).
+- `test_hypothesis()`: Returns a p-value from null hypothesis testing of stratified continuous or categorical data. Provides parametric and non-parametric testing options (see docs).
 
 ### > chunk_
 - `chunk_data_()`: Returns a factory function which returns chunks of a given data object (table, vector) with successive function calls.
