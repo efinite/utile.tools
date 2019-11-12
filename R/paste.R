@@ -30,8 +30,8 @@ paste_freq <- function(num = NA, den = NA, percent.sign = TRUE, digits = 1) {
   # Data aggregation
   if ('data.frame' %in% class(num)) num <- nrow(num)
   if ('data.frame' %in% class(den)) den <- nrow(den)
-  if (!all(is.numeric(num)) & (is.vector(num) | is.factor(num)) & !all(is.na(num))) num <- length(na.omit(num))
-  if (!all(is.numeric(den)) & (is.vector(den) | is.factor(den)) & !all(is.na(den))) den <- length(na.omit(den))
+  if (!all(is.numeric(num)) & (is.vector(num) | is.factor(num)) & !all(is.na(num))) num <- length(stats::na.omit(num))
+  if (!all(is.numeric(den)) & (is.vector(den) | is.factor(den)) & !all(is.na(den))) den <- length(stats::na.omit(den))
 
   # Hard stops
   if (length(num) != length(den) & length(den) != 1)
