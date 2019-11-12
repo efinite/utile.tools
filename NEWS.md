@@ -1,6 +1,11 @@
 # utile.tools 0.2.3
 * Improved NA value handling of `calc_duration()`.
-
+* `paste_freq()`:
+  - Added support for tallying factors.
+  - Removed default rounding of numerators <1 to 0.
+  - Calculated percentages may now return as infinity.
+* `paste_` functions: Fixed parameter naming [BREAKING CHANGE]  
+  
 # utile.tools 0.2.2
 * Added `calc_chunks()` & `chunk_data_()`. Tools for breaking tibbles, data frames, and vectors into smaller, usable chunks of data.
 * `tabulate_model()`: Formatted tables now combine the point estimate and confidence interval into a single column to be more consistent with the output of `utile.tables::` functions.
