@@ -4,7 +4,8 @@
   - Added support for tallying factors.
   - Removed default rounding of numerators <1 to 0.
   - Calculated percentages may now return as infinity.
-* `paste_` functions: Fixed parameter naming [BREAKING CHANGE]  
+* `paste_` functions: Fixed parameter naming [BREAKING CHANGE]
+* Consolidated `test_` functions into `test_hypothesis()` which has S3 methods for numeric, factor, and logical data. Numeric methods now support >2 strata. [BREAKING CHANGE]
   
 # utile.tools 0.2.2
 * Added `calc_chunks()` & `chunk_data_()`. Tools for breaking tibbles, data frames, and vectors into smaller, usable chunks of data.

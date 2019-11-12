@@ -1,56 +1,70 @@
-#' @title Test Numeric Data
-#' @description Returns p-value from parametric or non-parametric testing of stratified
-#' continuous (numeric) data.
-#' @param col Required. Character. Name of numeric column containing observations.
-#' @param by Required. Character. Name of logical or factor column to stratify by.
-#' @param data Required. Tibble. Data being used.
+#' @title Test the null hypothesis
+#' @description Returns a p-value from parametric or non-parametric testing of the
+#' null hypothesis for stratified data.
+#' @param x Required. Numeric or Factor. Observations.
+#' @param y Required. Factor. Factor to stratify by.
 #' @param parametric Optional. Logical. Indicates parametric testing should be used.
-#' (Student's T-Test). Defaults to FALSE (non-parametric; Wilcox).
+#' Defaults to FALSE (non-parametric). See note below detailing statistical testing.
 #' @param digits Optional. Integer. Number of digits to round to. Defaults to 1.
 #' @param p.digits Optional. Integer. Number of p-value digits to print. Note that
 #' p-values are still rounded using 'digits'. Defaults to 4.
+#' @note Statistical testing used is dependent on type of 'x' data, number of
+#' levels in the factor 'y', and whether parametric/non-parametric testing is
+#' selected. For continuous 'x' data, parametric testing is Student's t-test
+#' (y, 2 lvls) or one-way ANOVA (y, >2 lvls). Non-parametric testing is
+#' Wilcoxon Rank Sum/Mann Whitney U (y, 2 lvls) or Kruskal Wallis (y, >2 lvls).
+#' For factor or logical 'x' data, "parametric" testing is Chi-squared with
+#' (x, 2 lvls) and without (x, >2 lvls) Monte Carlo simulation. Non-parametric
+#' testing is the Fisher's exact test with (x, 2 lvls) and without (x, >2 lvls)
+#' Monte Carlo simulation.
+#' @return Character. Formatted p-value.
+#' @examples
+#' # Numeric data
+#' test_hypothesis(mtcars$mpg, as.factor(mtcars$gear))
+#'
+#' # Logical data
+#' test_hypothesis(as.logical(mtcars$vs), as.factor(mtcars$gear))
+#'
+#' # Factor data
+#' test_hypothesis(as.factor(mtcars$carb), as.factor(mtcars$gear))
 #' @export
-test_numeric <- function(col = NULL, by = '.by', data = NULL, parametric = FALSE, digits = 1, p.digits = 4) {
-  if (!is.null(col) & !is.null(data) & (length(unique(dplyr::filter(data, !is.na(!!rlang::sym(col)))[[by]]))) == 2) {
-    f <- stats::formula(paste("`", col, "` ~ `", by, "`", sep = ""))
-    pv <- if (!parametric) stats::wilcox.test(formula = f, alternative = 'two.sided', data = data)$p.value
-    else stats::t.test(formula = f, alternative = 'two.sided', data = data)$p.value
-    format.pval(pv = pv,digits = digits, eps = 0.0001, nsmall = p.digits, scientific = F)
-  } else '--'
+test_hypothesis <- function (x, y, parametric, digits, p.digits) {
+  UseMethod('test_hypothesis')
 }
 
+test_hypothesis.default <- function (x, y, parametric, digits, p.digits) as.character(NA)
 
-#' @title Test Factor Data
-#' @description Returns p-value from parametric or non-parametric testing of stratified categorical
-#' (factor) data.
-#' @param col Required. Character. Name of logical or factor column containing observations.
-#' @param by Required. Character. Name of logical or factor column to stratify by.
-#' @param data Required. Tibble. Data being used.
-#' @param parametric Optional. Logical. Indicates parametric testing should be used.
-#' (Chisquared). Defaults to FALSE (non-parametric; Fisher's Exact).
-#' @param digits Optional. Integer. Number of digits to round to. Defaults to 1.
-#' @param p.digits Optional. Integer. Number of p-value digits to print. Note that
-#' p-values are still rounded using 'digits'. Defaults to 4.
-#' @export
-test_factor <- function(col = NULL, by = '.by', data = NULL, parametric = TRUE, digits = 1, p.digits = 4) {
-  contTable <- table(data[[col]], data[[by]])
+test_hypothesis.numeric <- function(x = NA, y = NA, parametric = FALSE, digits = 1, p.digits = 4) {
+  unique_lvl <- length(unique(y[!is.na(x)]))
+  if (is.factor(y) & unique_lvl >= 2) {
+    pv <- if (unique_lvl == 2)
+      if (parametric) stats::t.test(formula = x ~ y, alternative = 'two.sided')$p.value
+      else stats::wilcox.test(x ~ y, alternative = 'two.sided')$p.value
+    else if (parametric) summary(aov(x ~ y))[[1]][[1,"Pr(>F)"]]
+    else stats::kruskal.test(x ~ y)$p.value
+    format.pval(pv = pv, digits = digits, eps = 0.0001, nsmall = p.digits, scientific = F)
+  } else NA
+}
+
+test_hypothesis.factor <- function(x = NA, y = NA, parametric = FALSE, digits = 1, p.digits = 4) {
+  contTable <- table(x, y)
   contTable <- contTable[rowSums(contTable) > 0, colSums(contTable) > 0, drop = FALSE]
   if (
-    !is.null(col) &
-    !is.null(data) &
+    is.factor(y) &
     as.integer(nrow(contTable)) > 1L &
     as.integer(ncol(contTable)) > 1L &
-    length(stats::na.omit(unique(data[[col]]))) > 1 &
-    length(stats::na.omit(unique(data[[by]]))) > 1
+    length(stats::na.omit(unique(x))) > 1 &
+    length(stats::na.omit(unique(y))) > 1
   ) {
     pv <-
-      if (stats::na.omit(length(unique(data[[col]]))) == 2) {
-        if (!parametric) stats::fisher.test(data[[col]], data[[by]])$p.value
-        else stats::chisq.test(data[[col]], data[[by]])$p.value
+      if (stats::na.omit(length(unique(x))) == 2) {
+        if (parametric) stats::chisq.test(x, y)$p.value
+        else stats::fisher.test(x, y)$p.value
       } else {
-        if (!parametric) stats::fisher.test(data[[col]], data[[by]], simulate.p.value = TRUE)$p.value
-        else stats::chisq.test(data[[col]], data[[by]], simulate.p.value = TRUE)$p.value
+        if (parametric) stats::chisq.test(x, y, simulate.p.value = TRUE)$p.value
+        stats::fisher.test(x, y, simulate.p.value = TRUE)$p.value
       }
     format.pval(pv = pv, digits = digits, eps = 1e-04, nsmall = p.digits, scientific = F)
-  } else '--'
+  } else NA
 }
+test_hypothesis.logical <- test_hypothesis.factor
