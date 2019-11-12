@@ -28,9 +28,7 @@ calc_duration <- function(start = NA, end = NA, units = 'years') {
   # Hard Stops
   if (
     !(all(lubridate::is.Date(start), na.rm = TRUE) | all(lubridate::is.POSIXt(start), na.rm = TRUE)) |
-    !(all(lubridate::is.Date(end), na.rm = TRUE) | all(lubridate::is.POSIXt(end), na.rm = TRUE)) |
-    all(is.na(start)) |
-    all(is.na(end))
+    !(all(lubridate::is.Date(end), na.rm = TRUE) | all(lubridate::is.POSIXt(end), na.rm = TRUE))
   ) stop('Missing Date or POSIXt object. Check: [\'start\', \'end\']')
   if (length(start) != length(end) & length(start) > 1 & length(end) > 1)
     stop('Provided data are not of the same length. Check [\'start\', \'end\']')
