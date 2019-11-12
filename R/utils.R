@@ -26,8 +26,8 @@ utils::globalVariables(c(
           tibble::tibble(
             Subjects = table$subjects,
             Events = paste_freq(
-              count = table$events,
-              total = table$subjects,
+              num = table$events,
+              den = table$subjects,
               percent.sign = percent.sign,
               digits = digits
             )
