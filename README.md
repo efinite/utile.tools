@@ -3,7 +3,7 @@
 [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/utile.tools)](https://CRAN.R-project.org/package=utile.tools)
 
 ## Overview
-A set of tools for preparing and summarizing data for publication purposes. Includes functions for tabulating models, means to produce human-readable summary statistics from raw data, tools for calculating durations, and simplistic hypothesis testing tools.
+A set of tools for preparing and summarizing data for publication purposes. Includes functions for tabulating models, means to produce human-readable summary statistics from raw data, macros for calculating duration of time, and simplistic hypothesis testing tools.
 
 ## Functions
 ### > tabulate_
