@@ -4,8 +4,13 @@
 \alias{tabulate_model.glm}
 \title{Tabulate Model: GLM}
 \usage{
-\method{tabulate_model}{glm}(fit, format = TRUE, percent.sign = TRUE,
-  digits = 1, p.digits = 4)
+\method{tabulate_model}{glm}(
+  fit,
+  format = TRUE,
+  percent.sign = TRUE,
+  digits = 1,
+  p.digits = 4
+)
 }
 \arguments{
 \item{fit}{Required. MASS::glm(family = 'binomial') object.}

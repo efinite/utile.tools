@@ -3,7 +3,7 @@
 [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/utile.tools)](https://CRAN.R-project.org/package=utile.tools)
 
 ## Overview
-A variety of tools for preparing and summarizing data for publication purposes. Function verbs include 'tabulate' for creating usable tabulated data from models, 'paste' for generating human-readable statistics from a variety of summarizable data types, 'calc' for reliably calculating differences between data points, and 'test' for conducting simple statistical tests which return human-readable results.
+A set of tools for preparing and summarizing data for publication purposes. Function verbs include 'tabulate' for creating usable tabulated data from models, 'paste' for generating human-readable statistics from a variety of summarizable data types, 'calc' for reliably calculating differences between data points, and 'test' for conducting simple statistical tests which return human-readable results.
 
 ## Functions
 ### > tabulate_

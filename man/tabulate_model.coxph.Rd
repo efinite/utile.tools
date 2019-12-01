@@ -4,8 +4,13 @@
 \alias{tabulate_model.coxph}
 \title{Tabulate Model: Cox PH}
 \usage{
-\method{tabulate_model}{coxph}(fit, format = TRUE, percent.sign = TRUE,
-  digits = 1, p.digits = 4)
+\method{tabulate_model}{coxph}(
+  fit,
+  format = TRUE,
+  percent.sign = TRUE,
+  digits = 1,
+  p.digits = 4
+)
 }
 \arguments{
 \item{fit}{Required. survival::coxph() object.}
