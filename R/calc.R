@@ -4,7 +4,8 @@
 #' @param start Required. Date or POSIXt object. The start date/timestamp.
 #' @param end Required. Date or POSIXt object. The end date/timestamp.
 #' @param units Optional. Character. Units of the returned duration
-#' (i.e. 'seconds', 'days', 'years'). Defaults to 'years'.
+#' (i.e. 'seconds', 'days', 'years'). By default returns a lubridate
+#' duration object without specified units.
 #' @note Supports multiple calculations against a single time point (i.e.
 #' multiple start dates with a single end date). Note that start and end
 #' must otherwise be of the same length.
@@ -23,7 +24,7 @@
 #'    units = 'years'
 #' )
 #' @export
-calc_duration <- function(start = NA, end = NA, units = 'years') {
+calc_duration <- function(start = NA, end = NA, units = NA) {
 
   # Hard Stops
   if (
@@ -43,9 +44,14 @@ calc_duration <- function(start = NA, end = NA, units = 'years') {
   if (all(lubridate::is.Date(start), na.rm = TRUE) & all(lubridate::is.POSIXt(end), na.rm = TRUE))
     end <- as.Date(end)
 
-  # Calculate and return data
-  as.numeric(lubridate::as.duration(lubridate::interval(start, end)), units)
+  # Calculate duration
+  duration <- lubridate::as.duration(lubridate::interval(start, end))
+
+  # Return data with appropriate type
+  if (!is.na(units)) as.numeric(duration, units)
+  else duration
 }
+
 
 #' @title Calculate indices of data "chunks" in a data object
 #' @description Calculates chunk indices of a data object

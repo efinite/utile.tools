@@ -1,3 +1,6 @@
+# utile.tools 0.2.4
+* `calc_duration()`: Now supports the return of a `lubridate::duration()` object when the units parameter is left unspecified.
+
 # utile.tools 0.2.3
 * Improved NA value handling of `calc_duration()`.
 * `paste_freq()`:
