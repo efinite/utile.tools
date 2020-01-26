@@ -4,7 +4,7 @@
 \alias{calc_duration}
 \title{Calculate Duration}
 \usage{
-calc_duration(start = NA, end = NA, units = "years")
+calc_duration(start = NA, end = NA, units = NA)
 }
 \arguments{
 \item{start}{Required. Date or POSIXt object. The start date/timestamp.}
@@ -12,7 +12,8 @@ calc_duration(start = NA, end = NA, units = "years")
 \item{end}{Required. Date or POSIXt object. The end date/timestamp.}
 
 \item{units}{Optional. Character. Units of the returned duration
-(i.e. 'seconds', 'days', 'years'). Defaults to 'years'.}
+(i.e. 'seconds', 'days', 'years'). By default returns a lubridate
+duration object without specified units.}
 }
 \description{
 Returns the duration of time between two provided date objects.
