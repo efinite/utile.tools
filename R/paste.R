@@ -114,49 +114,55 @@ paste_efs <- function(fit = NA, times = NA, percent.sign = TRUE, digits = 1) {
   }
 }
 
-#' @name paste_text
-#' @title Paste Text
-#' @description An augmented 'base::paste()' with optional management
-#' of NA values.
-#' @param ... Required. R objects to be converted to character vectors or
-#' documented 'base::paste()' or 'base::paste0()' parameters.
+#' @name paste
+#' @title Concatenate Strings
+#' @description An augmented version of base::paste() with options to
+#' manage NA values.
+#' @param ... Required. R objects to be converted to character vectors.
+#' @param sep Optional. Character. A string to separate the terms. Defaults
+#' to ' '.
+#' @param collapse Optional. Character. An string to separate the results.
+#' Defaults to NULL.
 #' @param na.rm Optional. Logical. Whether to remove NA values from 'x'.
 #' Note that NA values are also removed from vectors. Defaults
-#' to TRUE.
-#' @details The 'base::paste()' function is intentionally designed to
+#' to FALSE.
+#' @details The base::paste() function is intentionally designed to
 #' coarce NA values to characters that appear in the concatenated
-#' character output. However, this behavior is not always desirable (i.e.
+#' character output. This behavior is not always desirable (i.e.
 #' when the input is a dynamically generated vector of character strings
 #' that contains some NA values) and there is currently no means of opting
-#' out of this behavior.
+#' out of this behavior. These augmented functions address this deficit.
 #' @return Character vector of concatenated values.
-
-#' @rdname paste_text
+#' @seealso
+#' \code{\link{base::paste}},
+#' \code{\link{base::paste0}}
 #' @examples
-#' # Default 'base::paste()' handling of NA values
-#' paste_text(
-#'   'The', c('red', NA, 'orange'), 'fox jumped', NA, 'over the fence.',
-#'   collapse = ' ',
-#'   na.rm = FALSE
-#' )
-#'
-#' # Removal of NA values
-#' paste_text(
+#' # Base paste() NA handling behavior
+#' paste(
 #'   'The', c('red', NA, 'orange'), 'fox jumped', NA, 'over the fence.',
 #'   collapse = ' '
 #' )
+#'
+#' # Removal of NA values
+#' paste(
+#'   'The', c('red', NA, 'orange'), 'fox jumped', NA, 'over the fence.',
+#'   collapse = ' ',
+#'   na.rm = TRUE
+#' )
+
+#' @rdname paste
 #' @export
-paste_text <- function(..., na.rm = TRUE) {
-  x <- list(...)
+paste <- function(..., sep = ' ', collapse = NULL, na.rm = FALSE) {
+  x <- list(..., sep = sep, collapse = collapse)
   if (na.rm) x <- purrr::map(x[!is.na(x)], ~ .x[!is.na(.x)])
-  do.call(paste, x)
+  do.call(base::paste, x)
 }
 
-#' @rdname paste_text
+#' @rdname paste
 #' @export
-paste0_text <- function(..., na.rm = TRUE) {
-  x <- list(...)
+paste0 <- function(..., collapse = NULL, na.rm = FALSE) {
+  x <- list(..., collapse = NULL)
   if (na.rm) x <- purrr::map(x[!is.na(x)], ~ .x[!is.na(.x)])
-  do.call(paste0, x)
+  do.call(base::paste0, x)
 }
 
