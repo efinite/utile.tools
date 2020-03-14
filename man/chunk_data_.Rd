@@ -13,7 +13,7 @@ chunk_data_(data = NULL, size = 10, reverse = FALSE)
 that make up a given chunk. Must be a positive integer. Defaults to 10.}
 
 \item{reverse}{Optional. Logical. Calculate chunks from back to front.
-Defaults to front to back order.}
+Defaults to front to back ordering.}
 }
 \value{
 A factory function which returns a chunk of data from the provided

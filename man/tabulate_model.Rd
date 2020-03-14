@@ -29,7 +29,7 @@ table for publication purposes. By default, formats the table into
 a human-readable/exportable form.
 }
 \seealso{
-\code{\link{tabulate_model.lm}}
-\code{\link{tabulate_model.coxph}}
+\code{\link{tabulate_model.lm}},
+\code{\link{tabulate_model.coxph}},
 \code{\link{tabulate_model.glm}}
 }

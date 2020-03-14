@@ -12,8 +12,8 @@
 #' p-values are still rounded using 'digits'. Defaults to 4.
 #' @return Returns tibble containing summarizing statistics and tests.
 #' @seealso
-#' \code{\link{tabulate_model.lm}}
-#' \code{\link{tabulate_model.coxph}}
+#' \code{\link{tabulate_model.lm}},
+#' \code{\link{tabulate_model.coxph}},
 #' \code{\link{tabulate_model.glm}}
 #' @export
 tabulate_model <- function(fit, format, percent.sign, digits, p.digits) {
