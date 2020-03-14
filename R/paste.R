@@ -113,3 +113,34 @@ paste_efs <- function(fit = NA, times = NA, percent.sign = TRUE, digits = 1) {
     paste0(estimate, if (percent.sign) '%' else NULL, ' [', lower, '-', upper, ']')
   }
 }
+
+
+#' @title Paste Text
+#' @description An augmented 'base::paste()' with optional management
+#' of NA values.
+#' @param ... Required. R objects to be converted to character vectors or
+#' documented 'base::paste()' parameters.
+#' @param na.rm Optional. Logical. Whether to remove NA values from 'x'.
+#' Note that NA values are also removed from provided vectors. Defaults
+#' to TRUE.
+#' @examples
+#' # Default 'base::paste()' handling of NA values
+#' paste_text(
+#'   The', c('red', NA, 'orange'), 'fox jumped', NA, 'over the fence.',
+#'   sep = ' ',
+#'   collapse = ' ',
+#'   na.rm = FALSE
+#' )
+#'
+#' # Removal of NA values
+#' paste_text(
+#'   'The', c('red', NA, 'orange'), 'fox jumped', NA, 'over the fence.'
+#'   sep = ' ',
+#'   collapse = ' '
+#' )
+#' @export
+paste_text <- function(..., na.rm = TRUE, sep = '', collapse = NULL) {
+  x <- list(..., sep = sep, collapse = collapse)
+  if (na.rm) x <- purrr::map(x[!is.na(x)], ~ .x[!is.na(.x)])
+  do.call(paste, x)
+}

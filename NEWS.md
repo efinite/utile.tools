@@ -1,4 +1,6 @@
 # utile.tools 0.2.5
+* Added `paste_text()`, an augmented `base::paste()` with built-in NA value handling.
+
 # utile.tools 0.2.4
 * `calc_duration()`: Now supports the return of a `lubridate::duration()` object when the units parameter is left unspecified.
 
