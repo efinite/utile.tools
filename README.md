@@ -11,7 +11,7 @@ A set of tools for preparing and summarizing data for publication purposes. Incl
 - `tabulate_at_risk()`: Returns a risk table from a model object and specified time points.
 
 ### > paste_
-- `paste()` & `paste0`: Augmented versions of the base functions with an option to handle NA values. No differences from base in default function behaviors.
+- `paste()` & `paste0`: The base functions with an added 'na.rm' parameter for nested NA removal. Default function behavior is identical to base counterparts.
 - `paste_freq()`: Returns a human-readable frequency from count(able) data. Handily has methods for several types of data.
 - `paste_median()`: Returns a human-readable median with inter-quartile range from numeric data.
 - `paste_mean()`: Returns a human-readable mean with standard deviation from numeric data.

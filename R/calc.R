@@ -4,8 +4,9 @@
 #' @param start Required. Date or POSIXt object. The start date/timestamp.
 #' @param end Required. Date or POSIXt object. The end date/timestamp.
 #' @param units Optional. Character. Units of the returned duration
-#' (i.e. 'seconds', 'days', 'years'). By default returns a lubridate
-#' duration object without specified units.
+#' (i.e. 'seconds', 'days', 'years').
+#' @return If 'units' specified, returns numeric. If 'units' unspecified,
+#' returns a lubridate duration object (i.e. units in seconds).
 #' @note Supports multiple calculations against a single time point (i.e.
 #' multiple start dates with a single end date). Note that start and end
 #' must otherwise be of the same length.
@@ -58,9 +59,9 @@ calc_duration <- function(start = NA, end = NA, units = NA) {
 #' for a given chunk size (number of items per chunk).
 #' @param data Required. Tibble, data frame, vector.
 #' @param size Optional. Integer. The number of items (e.g. rows in a tibble)
-#' that make up a given chunk. Must be a positive integer. Defaults to 10 or max.
+#' that make up a given chunk. Must be a positive integer. Caps out at data
+#' maximum.
 #' @param reverse Optional. Logical. Calculate chunks from back to front.
-#' Defaults to front to back order.
 #' @return An iterable list of row indices for each chunk of data.
 #' @examples
 #' # Create chunk map for a data frame

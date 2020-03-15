@@ -4,10 +4,11 @@
 #' @param x Required. Numeric or Factor. Observations.
 #' @param y Required. Factor. Factor to stratify by.
 #' @param parametric Optional. Logical. Indicates parametric testing should be used.
-#' Defaults to FALSE (non-parametric). See note below detailing statistical testing.
-#' @param digits Optional. Integer. Number of digits to round to. Defaults to 1.
+#' See note detailing statistical tests.
+#' @param digits Optional. Integer. Number of digits to round to.
 #' @param p.digits Optional. Integer. Number of p-value digits to print. Note that
-#' p-values are still rounded using 'digits'. Defaults to 4.
+#' p-values are still rounded using 'digits'.
+#' @return Character. Formatted p-value.
 #' @note Statistical testing used is dependent on type of 'x' data, number of
 #' levels in the factor 'y', and whether parametric/non-parametric testing is
 #' selected. For continuous 'x' data, parametric testing is Student's t-test
@@ -17,7 +18,6 @@
 #' (x, 2 lvls) and without (x, >2 lvls) Monte Carlo simulation. Non-parametric
 #' testing is the Fisher's exact test with (x, 2 lvls) and without (x, >2 lvls)
 #' Monte Carlo simulation.
-#' @return Character. Formatted p-value.
 #' @examples
 #' # Numeric data
 #' test_hypothesis(mtcars$mpg, as.factor(mtcars$gear))

@@ -3,9 +3,8 @@
 #' of a given data object with each function call.
 #' @param data Required. Tibble, data frame, vector.
 #' @param size Optional. Integer. The number of items (e.g. rows in a tibble)
-#' that make up a given chunk. Must be a positive integer. Defaults to 10.
+#' that make up a given chunk. Must be a positive integer.
 #' @param reverse Optional. Logical. Calculate chunks from back to front.
-#' Defaults to front to back ordering.
 #' @return A factory function which returns a chunk of data from the provided
 #' object with each call. Once all data has been returned, function returns
 #' NULL perpetually.

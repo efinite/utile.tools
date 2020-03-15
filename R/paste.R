@@ -8,8 +8,9 @@
 #' a single denominator for multiple numerators or one denominator for each
 #' numerator.
 #' @param percent.sign Optional. Logical. Indicates percent sign should be printed
-#' for frequencies. Defaults to TRUE.
-#' @param digits Optional. Integer. Number of digits to round to. Defaults to 1.
+#' for frequencies.
+#' @param digits Optional. Integer. Number of digits to round to.
+#' @return A character vector of the count(s) with frequenc(y|-ies).
 #' @examples
 #' library(tibble)
 #'
@@ -52,8 +53,9 @@ paste_freq <- function(num = NA, den = NA, percent.sign = TRUE, digits = 1) {
 #' range from numeric data.
 #' @param x Required. Numeric. Data to summarize.
 #' @param less.than.one Optional. Logical. Indicates a median that rounds to 0 should
-#' be printed as <1. Defaults to FALSE (0).
-#' @param digits Optional. Integer. Number of digits to round to. Defaults to 1.
+#' be printed as <1.
+#' @param digits Optional. Integer. Number of digits to round to.
+#' @return A character vector of the median(s) with interquartile range(s).
 #' @examples
 #' paste_median(mtcars$mpg)
 #' @export
@@ -73,8 +75,9 @@ paste_median <- function(x = NA, less.than.one = FALSE, digits = 1) {
 #' from numeric data.
 #' @param x Required. Numeric. Data to summarize.
 #' @param less.than.one Optional. Logical. Indicates a mean that rounds to 0 should
-#' be printed as <1. Defaults to FALSE (0).
-#' @param digits Optional. Integer. Number of digits to round to. Defaults to 1.
+#' be printed as <1.
+#' @param digits Optional. Integer. Number of digits to round to.
+#' @return A character vector of the mean(s) with standard deviation(s).
 #' @examples
 #' paste_mean(mtcars$mpg)
 #' @export
@@ -96,8 +99,9 @@ paste_mean <- function(x = NA, less.than.one = FALSE, digits = 1) {
 #' @param times Required. Numeric. Indicates duration of time-points of interest.
 #' Units are whatever was used to create the time-to-event model.
 #' @param percent.sign Optional. Logical. Indicates percent sign should be printed
-#' for frequencies. Defaults to TRUE.
-#' @param digits Optional. Integer. Number of digits to round to. Defaults to 1.
+#' for frequencies.
+#' @param digits Optional. Integer. Number of digits to round to.
+#' @return A character vector of event free survival(s).
 #' @examples
 #' library(survival)
 #' fit <- survfit(Surv(time, status) ~ 1, data = diabetic)
@@ -119,13 +123,10 @@ paste_efs <- function(fit = NA, times = NA, percent.sign = TRUE, digits = 1) {
 #' @description An augmented version of base::paste() with options to
 #' manage NA values.
 #' @param ... Required. R objects to be converted to character vectors.
-#' @param sep Optional. Character. A string to separate the terms. Defaults
-#' to ' '.
+#' @param sep Optional. Character. A string to separate the terms.
 #' @param collapse Optional. Character. An string to separate the results.
-#' Defaults to NULL.
 #' @param na.rm Optional. Logical. Whether to remove NA values from 'x'.
-#' Note that NA values are also removed from vectors. Defaults
-#' to FALSE.
+#' Note that NA values are also removed from vectors.
 #' @details The base::paste() function is intentionally designed to
 #' coarce NA values to characters that appear in the concatenated
 #' character output. This behavior is not always desirable (i.e.

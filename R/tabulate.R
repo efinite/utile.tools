@@ -1,15 +1,13 @@
 #' @title Tabulate Model
 #' @description Converts parameters from a model object into a usable
-#' table for publication purposes. By default, formats the table into
-#' a human-readable/exportable form.
+#' table for publication purposes.
 #' @param fit Required. Model object. See S3 methods below.
-#' @param format Optional. Logical. Rounds numbers and formats text for a
-#' cleaner, readable output. Defaults to TRUE.
-#' @param percent.sign Optional. Logical. Indicates percent sign should be printed
-#' for frequencies. Defaults to TRUE.
-#' @param digits Optional. Integer. Number of digits to round to. Defaults to 1.
+#' @param format Optional. Logical. Round numbers and format text for a
+#' cleaner, readable output.
+#' @param percent.sign Optional. Logical. Print percent sign after frequencies.
+#' @param digits Optional. Integer. Number of digits to round to.
 #' @param p.digits Optional. Integer. Number of p-value digits to print. Note that
-#' p-values are still rounded using 'digits'. Defaults to 4.
+#' p-values are still rounded according to 'digits' value.
 #' @return Returns tibble containing summarizing statistics and tests.
 #' @seealso
 #' \code{\link{tabulate_model.lm}},
@@ -97,17 +95,18 @@ tabulate_model.default <- function(fit = NULL, format = NULL, percent.sign = NUL
 
 }
 
+
 #' @title Tabulate Model: Cox PH
 #' @description Converts parameters from a cox parametric hazards model
 #' into a usable table for publication purposes.
 #' @param fit Required. survival::coxph() object.
 #' @param format Optional. Logical. Rounds numbers and formats text for a
-#' cleaner, readable output. Defaults to TRUE.
-#' @param percent.sign Optional. Logical. Indicates percent sign should be printed
-#' for frequencies. Defaults to TRUE.
-#' @param digits Optional. Integer. Number of digits to round to. Defaults to 1.
+#' cleaner, readable output.
+#' @param percent.sign Optional. Logical. Print percent sign after frequencies.
+#' @param digits Optional. Integer. Number of digits to round to.
 #' @param p.digits Optional. Integer. Number of p-value digits to print. Note that
-#' p-values are still rounded using 'digits'. Defaults to 4.
+#' p-values are still rounded using 'digits'.
+#' @return Returns tibble containing summarizing statistics and tests.
 #' @seealso \code{\link{tabulate_model}}
 #' @examples
 #' library(survival)
@@ -151,17 +150,18 @@ tabulate_model.coxph <- function(fit, format = TRUE, percent.sign = TRUE, digits
   else res
 }
 
+
 #' @title Tabulate Model: GLM
 #' @description Converts parameters from a generalized linear model into a usable
 #' table for publication purposes.
 #' @param fit Required. MASS::glm(family = 'binomial') object.
 #' @param format Optional. Logical. Rounds numbers and formats text for a
-#' cleaner, readable output. Defaults to TRUE.
-#' @param percent.sign Optional. Logical. Indicates percent sign should be printed
-#' for frequencies. Defaults to TRUE.
-#' @param digits Optional. Integer. Number of digits to round to. Defaults to 1.
+#' cleaner, readable output.
+#' @param percent.sign Optional. Logical. Print percent sign after frequencies.
+#' @param digits Optional. Integer. Number of digits to round to.
 #' @param p.digits Optional. Integer. Number of p-value digits to print. Note that
-#' p-values are still rounded using 'digits'. Defaults to 4.
+#' p-values are still rounded using 'digits'.
+#' @return Returns tibble containing summarizing statistics and tests.
 #' @seealso \code{\link{tabulate_model}}
 #' @examples
 #' library(dplyr)
@@ -225,17 +225,18 @@ tabulate_model.glm <- function(fit,  format = TRUE, percent.sign = TRUE, digits 
   }
 }
 
+
 #' @title Tabulate Model: Linear Regression (LM)
 #' @description Converts parameters from a linear regression model into a usable
 #' table for publication purposes.
 #' @param fit Required. lm() object.
 #' @param format Optional. Logical. Rounds numbers and formats text for a
-#' cleaner, readable output. Defaults to TRUE.
-#' @param percent.sign Optional. Logical. Indicates percent sign should be printed
-#' for frequencies. Defaults to TRUE.
-#' @param digits Optional. Integer. Number of digits to round to. Defaults to 1.
+#' cleaner, readable output.
+#' @param percent.sign Optional. Logical. Print percent sign after frequencies.
+#' @param digits Optional. Integer. Number of digits to round to.
 #' @param p.digits Optional. Integer. Number of p-value digits to print. Note that
-#' p-values are still rounded using 'digits'. Defaults to 4.
+#' p-values are still rounded using 'digits'.
+#' @return Returns tibble containing summarizing statistics and tests.
 #' @seealso \code{\link{tabulate_model}}
 #' @examples
 #' library(dplyr)
@@ -280,6 +281,7 @@ tabulate_model.lm <- function(fit, format = TRUE, percent.sign = TRUE, digits = 
   if (format) .format_table(res, estimate = 'Estimate', percent.sign = percent.sign, digits = digits, p.digits = p.digits)
   else res
 }
+
 
 #' @title Tabulate At Risk
 #' @description Returns a risk table from a model object and specified time points.
