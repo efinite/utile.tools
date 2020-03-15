@@ -1,5 +1,5 @@
 # utile.tools 0.2.5
-* Added `paste()` & `paste0()`. Augmented versions of `base::paste()` with options for NA value handling. No changes in default function behavior.
+* Added `paste()` & `paste0()`. Base functions with added option for NA removal. Default behavior identical to base functions.
 
 # utile.tools 0.2.4
 * `calc_duration()`: Now supports the return of a `lubridate::duration()` object when the units parameter is left unspecified.

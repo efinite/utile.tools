@@ -12,8 +12,11 @@ calc_duration(start = NA, end = NA, units = NA)
 \item{end}{Required. Date or POSIXt object. The end date/timestamp.}
 
 \item{units}{Optional. Character. Units of the returned duration
-(i.e. 'seconds', 'days', 'years'). By default returns a lubridate
-duration object without specified units.}
+(i.e. 'seconds', 'days', 'years').}
+}
+\value{
+If 'units' specified, returns numeric. If 'units' unspecified,
+returns a lubridate duration object (i.e. units in seconds).
 }
 \description{
 Returns the duration of time between two provided date objects.

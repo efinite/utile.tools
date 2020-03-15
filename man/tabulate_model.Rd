@@ -9,24 +9,22 @@ tabulate_model(fit, format, percent.sign, digits, p.digits)
 \arguments{
 \item{fit}{Required. Model object. See S3 methods below.}
 
-\item{format}{Optional. Logical. Rounds numbers and formats text for a
-cleaner, readable output. Defaults to TRUE.}
+\item{format}{Optional. Logical. Round numbers and format text for a
+cleaner, readable output.}
 
-\item{percent.sign}{Optional. Logical. Indicates percent sign should be printed
-for frequencies. Defaults to TRUE.}
+\item{percent.sign}{Optional. Logical. Print percent sign after frequencies.}
 
-\item{digits}{Optional. Integer. Number of digits to round to. Defaults to 1.}
+\item{digits}{Optional. Integer. Number of digits to round to.}
 
 \item{p.digits}{Optional. Integer. Number of p-value digits to print. Note that
-p-values are still rounded using 'digits'. Defaults to 4.}
+p-values are still rounded according to 'digits' value.}
 }
 \value{
 Returns tibble containing summarizing statistics and tests.
 }
 \description{
 Converts parameters from a model object into a usable
-table for publication purposes. By default, formats the table into
-a human-readable/exportable form.
+table for publication purposes.
 }
 \seealso{
 \code{\link{tabulate_model.lm}},

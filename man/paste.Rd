@@ -12,15 +12,12 @@ paste0(..., collapse = NULL, na.rm = FALSE)
 \arguments{
 \item{...}{Required. R objects to be converted to character vectors.}
 
-\item{sep}{Optional. Character. A string to separate the terms. Defaults
-to ' '.}
+\item{sep}{Optional. Character. A string to separate the terms.}
 
-\item{collapse}{Optional. Character. An string to separate the results.
-Defaults to NULL.}
+\item{collapse}{Optional. Character. An string to separate the results.}
 
 \item{na.rm}{Optional. Logical. Whether to remove NA values from 'x'.
-Note that NA values are also removed from vectors. Defaults
-to FALSE.}
+Note that NA values are also removed from vectors.}
 }
 \value{
 Character vector of concatenated values.

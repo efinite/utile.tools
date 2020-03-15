@@ -13,9 +13,12 @@ paste_efs(fit = NA, times = NA, percent.sign = TRUE, digits = 1)
 Units are whatever was used to create the time-to-event model.}
 
 \item{percent.sign}{Optional. Logical. Indicates percent sign should be printed
-for frequencies. Defaults to TRUE.}
+for frequencies.}
 
-\item{digits}{Optional. Integer. Number of digits to round to. Defaults to 1.}
+\item{digits}{Optional. Integer. Number of digits to round to.}
+}
+\value{
+A character vector of event free survival(s).
 }
 \description{
 Returns a human-readable event-free-survival from a survfit object

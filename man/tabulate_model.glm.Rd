@@ -16,15 +16,17 @@
 \item{fit}{Required. MASS::glm(family = 'binomial') object.}
 
 \item{format}{Optional. Logical. Rounds numbers and formats text for a
-cleaner, readable output. Defaults to TRUE.}
+cleaner, readable output.}
 
-\item{percent.sign}{Optional. Logical. Indicates percent sign should be printed
-for frequencies. Defaults to TRUE.}
+\item{percent.sign}{Optional. Logical. Print percent sign after frequencies.}
 
-\item{digits}{Optional. Integer. Number of digits to round to. Defaults to 1.}
+\item{digits}{Optional. Integer. Number of digits to round to.}
 
 \item{p.digits}{Optional. Integer. Number of p-value digits to print. Note that
-p-values are still rounded using 'digits'. Defaults to 4.}
+p-values are still rounded using 'digits'.}
+}
+\value{
+Returns tibble containing summarizing statistics and tests.
 }
 \description{
 Converts parameters from a generalized linear model into a usable

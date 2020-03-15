@@ -12,12 +12,12 @@ test_hypothesis(x, y, parametric, digits, p.digits)
 \item{y}{Required. Factor. Factor to stratify by.}
 
 \item{parametric}{Optional. Logical. Indicates parametric testing should be used.
-Defaults to FALSE (non-parametric). See note below detailing statistical testing.}
+See note detailing statistical tests.}
 
-\item{digits}{Optional. Integer. Number of digits to round to. Defaults to 1.}
+\item{digits}{Optional. Integer. Number of digits to round to.}
 
 \item{p.digits}{Optional. Integer. Number of p-value digits to print. Note that
-p-values are still rounded using 'digits'. Defaults to 4.}
+p-values are still rounded using 'digits'.}
 }
 \value{
 Character. Formatted p-value.

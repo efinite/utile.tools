@@ -10,10 +10,10 @@ calc_chunks(data = NULL, size = 10, reverse = FALSE)
 \item{data}{Required. Tibble, data frame, vector.}
 
 \item{size}{Optional. Integer. The number of items (e.g. rows in a tibble)
-that make up a given chunk. Must be a positive integer. Defaults to 10 or max.}
+that make up a given chunk. Must be a positive integer. Caps out at data
+maximum.}
 
-\item{reverse}{Optional. Logical. Calculate chunks from back to front.
-Defaults to front to back order.}
+\item{reverse}{Optional. Logical. Calculate chunks from back to front.}
 }
 \value{
 An iterable list of row indices for each chunk of data.

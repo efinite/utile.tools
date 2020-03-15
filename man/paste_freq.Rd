@@ -16,9 +16,12 @@ a single denominator for multiple numerators or one denominator for each
 numerator.}
 
 \item{percent.sign}{Optional. Logical. Indicates percent sign should be printed
-for frequencies. Defaults to TRUE.}
+for frequencies.}
 
-\item{digits}{Optional. Integer. Number of digits to round to. Defaults to 1.}
+\item{digits}{Optional. Integer. Number of digits to round to.}
+}
+\value{
+A character vector of the count(s) with frequenc(y|-ies).
 }
 \description{
 Returns a human-readable frequency from count(able) data. Supports

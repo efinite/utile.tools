@@ -10,9 +10,12 @@ paste_median(x = NA, less.than.one = FALSE, digits = 1)
 \item{x}{Required. Numeric. Data to summarize.}
 
 \item{less.than.one}{Optional. Logical. Indicates a median that rounds to 0 should
-be printed as <1. Defaults to FALSE (0).}
+be printed as <1.}
 
-\item{digits}{Optional. Integer. Number of digits to round to. Defaults to 1.}
+\item{digits}{Optional. Integer. Number of digits to round to.}
+}
+\value{
+A character vector of the median(s) with interquartile range(s).
 }
 \description{
 Returns a human-readable median with inter-quartile

@@ -10,9 +10,12 @@ paste_mean(x = NA, less.than.one = FALSE, digits = 1)
 \item{x}{Required. Numeric. Data to summarize.}
 
 \item{less.than.one}{Optional. Logical. Indicates a mean that rounds to 0 should
-be printed as <1. Defaults to FALSE (0).}
+be printed as <1.}
 
-\item{digits}{Optional. Integer. Number of digits to round to. Defaults to 1.}
+\item{digits}{Optional. Integer. Number of digits to round to.}
+}
+\value{
+A character vector of the mean(s) with standard deviation(s).
 }
 \description{
 Returns a human-readable mean with standard deviation
