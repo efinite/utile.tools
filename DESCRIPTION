@@ -13,7 +13,6 @@ Depends:
 Imports: tibble,
     dplyr,
     lubridate,
-    rlang,
     purrr,
     stringr
 Suggests:
