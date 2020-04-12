@@ -1,5 +1,6 @@
-#' @title Break a data object into chunks
-#' @description Creates a factory function which returns a different chunk
+#' @title Break data into chunks
+#' @description
+#' Creates a factory function which returns a different chunk
 #' of a given data object with each function call.
 #' @param data Required. Tibble, data frame, vector.
 #' @param size Optional. Integer. The number of items (e.g. rows in a tibble)

@@ -1,6 +1,7 @@
-#' @title Paste Frequency
-#' @description Returns a human-readable frequency from count(able) data. Supports
-#' vectorized data (i.e. dplyr::mutate()).
+#' @title Paste frequency
+#' @description
+#' Creates a human-readable frequency from count(able) data. Supports
+#' vectorized data (i.e. \code{\link[dplyr:mutate]{dplyr::mutate()}}).
 #' @param num Optional. Tibble, Numeric, or Non-Numeric. The numerator.
 #' Tibbles and non-numeric data are automatically tallied (nrow or length).
 #' @param den Optional. Tibble, Numeric, or Non-Numeric. The denominator.
@@ -48,9 +49,9 @@ paste_freq <- function(num = NA, den = NA, percent.sign = TRUE, digits = 1) {
 }
 
 
-#' @title Paste Median
-#' @description Returns a human-readable median with inter-quartile
-#' range from numeric data.
+#' @title Paste median
+#' @description
+#' Creates a human-readable median with inter-quartile range from numeric data.
 #' @param x Required. Numeric. Data to summarize.
 #' @param less.than.one Optional. Logical. Indicates a median that rounds to 0 should
 #' be printed as <1.
@@ -70,8 +71,9 @@ paste_median <- function(x = NA, less.than.one = FALSE, digits = 1) {
 }
 
 
-#' @title Paste Mean
-#' @description Returns a human-readable mean with standard deviation
+#' @title Paste mean
+#' @description
+#' Creates a human-readable mean with standard deviation
 #' from numeric data.
 #' @param x Required. Numeric. Data to summarize.
 #' @param less.than.one Optional. Logical. Indicates a mean that rounds to 0 should
@@ -92,10 +94,12 @@ paste_mean <- function(x = NA, less.than.one = FALSE, digits = 1) {
 }
 
 
-#' @title Paste Event-Free-Survival
-#' @description Returns a human-readable event-free-survival from a survfit object
+#' @title Paste event-free survival
+#' @description
+#' Creates a human-readable event-free-survival from a survfit object
 #' and a specified time point.
-#' @param fit Required. survival::Surv() object. The time-to-event model of interest.
+#' @param fit Required. An object of class '\code{\link[survival]{Surv}}'. The
+#' time-to-event model of interest.
 #' @param times Required. Numeric. Indicates duration of time-points of interest.
 #' Units are whatever was used to create the time-to-event model.
 #' @param percent.sign Optional. Logical. Indicates percent sign should be printed
@@ -104,6 +108,7 @@ paste_mean <- function(x = NA, less.than.one = FALSE, digits = 1) {
 #' @return A character vector of event free survival(s).
 #' @examples
 #' library(survival)
+#'
 #' fit <- survfit(Surv(time, status) ~ 1, data = diabetic)
 #' paste_efs(fit, c(1, 3, 5))
 #' @export
@@ -119,24 +124,22 @@ paste_efs <- function(fit = NA, times = NA, percent.sign = TRUE, digits = 1) {
 }
 
 #' @name paste
-#' @title Concatenate Strings
-#' @description An augmented version of base::paste() with options to
+#' @title Concatenate strings
+#' @description
+#' An augmented version of \code{\link[base:paste]{base::paste()}} with options to
 #' manage NA values.
 #' @param ... Required. R objects to be converted to character vectors.
 #' @param sep Optional. Character. A string to separate the terms.
 #' @param collapse Optional. Character. An string to separate the results.
 #' @param na.rm Optional. Logical. Whether to remove NA values from 'x'.
 #' Note that NA values are also removed from vectors.
-#' @details The base::paste() function is intentionally designed to
-#' coarce NA values to characters that appear in the concatenated
-#' character output. This behavior is not always desirable (i.e.
-#' when the input is a dynamically generated vector of character strings
-#' that contains some NA values) and there is currently no means of opting
-#' out of this behavior. These augmented functions address this deficit.
+#' @details The \code{\link[base:paste]{base::paste()}} function is intentionally
+#' designed to coarce NA values to characters that appear in the concatenated
+#' character output. This behavior is not always desirable (i.e. when programatically
+#' calling paste) and there is currently no means of opting out of this behavior.
+#' These augmented functions address this deficit.
 #' @return Character vector of concatenated values.
-#' @seealso
-#' \code{\link{base::paste}},
-#' \code{\link{base::paste0}}
+#' @seealso \code{\link[base]{paste}}
 #' @examples
 #' # Base paste() NA handling behavior
 #' paste(

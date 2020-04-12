@@ -1,5 +1,6 @@
 #' @title Test the null hypothesis
-#' @description Returns a p-value from parametric or non-parametric testing of the
+#' @description
+#' Produces a p-value from parametric or non-parametric testing of the
 #' null hypothesis for stratified data.
 #' @param x Required. Numeric or Factor. Observations.
 #' @param y Required. Factor. Factor to stratify by.

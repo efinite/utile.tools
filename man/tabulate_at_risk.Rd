@@ -2,23 +2,24 @@
 % Please edit documentation in R/tabulate.R
 \name{tabulate_at_risk}
 \alias{tabulate_at_risk}
-\title{Tabulate At Risk}
+\title{Tabulate numbers at risk}
 \usage{
 tabulate_at_risk(fit = NULL, times = NULL)
 }
 \arguments{
-\item{fit}{Required. survival::survfit() object.}
+\item{fit}{Required. An object of class '\code{\link[survival:survfit]{survfit}}'.}
 
-\item{times}{Required. Numeric. One or vector of times to calculate for.}
+\item{times}{Required. Numeric. Vector of times to calculate for.}
 }
 \value{
-Tibble risk table.
+A \code{\link[tibble:tibble]{tibble}} containing numbers at risk.
 }
 \description{
-Returns a risk table from a model object and specified time points.
+Creates a risk table from a model object and specified time points.
 }
 \examples{
 library(survival)
+
 fit <- survfit(Surv(time, status) ~ 1, data = diabetic)
 tabulate_at_risk(fit, c(1, 3, 5))
 }

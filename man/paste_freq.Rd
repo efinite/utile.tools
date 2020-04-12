@@ -2,7 +2,7 @@
 % Please edit documentation in R/paste.R
 \name{paste_freq}
 \alias{paste_freq}
-\title{Paste Frequency}
+\title{Paste frequency}
 \usage{
 paste_freq(num = NA, den = NA, percent.sign = TRUE, digits = 1)
 }
@@ -24,8 +24,8 @@ for frequencies.}
 A character vector of the count(s) with frequenc(y|-ies).
 }
 \description{
-Returns a human-readable frequency from count(able) data. Supports
-vectorized data (i.e. dplyr::mutate()).
+Creates a human-readable frequency from count(able) data. Supports
+vectorized data (i.e. \code{\link[dplyr:mutate]{dplyr::mutate()}}).
 }
 \examples{
 library(tibble)

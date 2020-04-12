@@ -3,7 +3,7 @@
 \name{paste}
 \alias{paste}
 \alias{paste0}
-\title{Concatenate Strings}
+\title{Concatenate strings}
 \usage{
 paste(..., sep = " ", collapse = NULL, na.rm = FALSE)
 
@@ -23,16 +23,15 @@ Note that NA values are also removed from vectors.}
 Character vector of concatenated values.
 }
 \description{
-An augmented version of base::paste() with options to
+An augmented version of \code{\link[base:paste]{base::paste()}} with options to
 manage NA values.
 }
 \details{
-The base::paste() function is intentionally designed to
-coarce NA values to characters that appear in the concatenated
-character output. This behavior is not always desirable (i.e.
-when the input is a dynamically generated vector of character strings
-that contains some NA values) and there is currently no means of opting
-out of this behavior. These augmented functions address this deficit.
+The \code{\link[base:paste]{base::paste()}} function is intentionally
+designed to coarce NA values to characters that appear in the concatenated
+character output. This behavior is not always desirable (i.e. when programatically
+calling paste) and there is currently no means of opting out of this behavior.
+These augmented functions address this deficit.
 }
 \examples{
 # Base paste() NA handling behavior
@@ -49,6 +48,5 @@ paste(
 )
 }
 \seealso{
-\code{\link{base::paste}},
-\code{\link{base::paste0}}
+\code{\link[base]{paste}}
 }

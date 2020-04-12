@@ -2,7 +2,7 @@
 % Please edit documentation in R/chunk.R
 \name{chunk_data_}
 \alias{chunk_data_}
-\title{Break a data object into chunks}
+\title{Break data into chunks}
 \usage{
 chunk_data_(data = NULL, size = 10, reverse = FALSE)
 }

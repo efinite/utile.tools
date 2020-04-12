@@ -23,7 +23,7 @@ p-values are still rounded using 'digits'.}
 Character. Formatted p-value.
 }
 \description{
-Returns a p-value from parametric or non-parametric testing of the
+Produces a p-value from parametric or non-parametric testing of the
 null hypothesis for stratified data.
 }
 \note{

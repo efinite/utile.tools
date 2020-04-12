@@ -1,12 +1,13 @@
-#' @title Calculate Duration
-#' @description Returns the duration of time between two provided date objects.
-#' Supports vectorized data (i.e. dplyr::mutate()).
+#' @title Calculate durations of time
+#' @description
+#' Calculates the duration of time between two provided date objects.
+#' Supports vectorized data (i.e. \code{\link[dplyr:mutate]{dplyr::mutate()}}).
 #' @param start Required. Date or POSIXt object. The start date/timestamp.
 #' @param end Required. Date or POSIXt object. The end date/timestamp.
 #' @param units Optional. Character. Units of the returned duration
 #' (i.e. 'seconds', 'days', 'years').
 #' @return If 'units' specified, returns numeric. If 'units' unspecified,
-#' returns a lubridate duration object (i.e. units in seconds).
+#' returns an object of class '\code{\link[lubridate:Duration-class]{Duration}}'.
 #' @note Supports multiple calculations against a single time point (i.e.
 #' multiple start dates with a single end date). Note that start and end
 #' must otherwise be of the same length.
@@ -54,8 +55,9 @@ calc_duration <- function(start = NA, end = NA, units = NA) {
 }
 
 
-#' @title Calculate indices of data "chunks" in a data object
-#' @description Calculates chunk indices of a data object
+#' @title Calculate data chunk indices
+#' @description
+#' Calculates chunk indices of a data object
 #' for a given chunk size (number of items per chunk).
 #' @param data Required. Tibble, data frame, vector.
 #' @param size Optional. Integer. The number of items (e.g. rows in a tibble)

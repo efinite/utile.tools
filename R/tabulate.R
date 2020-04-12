@@ -443,13 +443,15 @@ tabulate_coef.lm <- function (
 }
 
 
-#' @title Tabulate At Risk
-#' @description Returns a risk table from a model object and specified time points.
-#' @param fit Required. survival::survfit() object.
-#' @param times Required. Numeric. One or vector of times to calculate for.
-#' @return Tibble risk table.
+#' @title Tabulate numbers at risk
+#' @description
+#' Creates a risk table from a model object and specified time points.
+#' @param fit Required. An object of class '\code{\link[survival:survfit]{survfit}}'.
+#' @param times Required. Numeric. Vector of times to calculate for.
+#' @return A \code{\link[tibble:tibble]{tibble}} containing numbers at risk.
 #' @examples
 #' library(survival)
+#'
 #' fit <- survfit(Surv(time, status) ~ 1, data = diabetic)
 #' tabulate_at_risk(fit, c(1, 3, 5))
 #' @export

@@ -2,12 +2,13 @@
 % Please edit documentation in R/paste.R
 \name{paste_efs}
 \alias{paste_efs}
-\title{Paste Event-Free-Survival}
+\title{Paste event-free survival}
 \usage{
 paste_efs(fit = NA, times = NA, percent.sign = TRUE, digits = 1)
 }
 \arguments{
-\item{fit}{Required. survival::Surv() object. The time-to-event model of interest.}
+\item{fit}{Required. An object of class '\code{\link[survival]{Surv}}'. The
+time-to-event model of interest.}
 
 \item{times}{Required. Numeric. Indicates duration of time-points of interest.
 Units are whatever was used to create the time-to-event model.}
@@ -21,11 +22,12 @@ for frequencies.}
 A character vector of event free survival(s).
 }
 \description{
-Returns a human-readable event-free-survival from a survfit object
+Creates a human-readable event-free-survival from a survfit object
 and a specified time point.
 }
 \examples{
 library(survival)
+
 fit <- survfit(Surv(time, status) ~ 1, data = diabetic)
 paste_efs(fit, c(1, 3, 5))
 }

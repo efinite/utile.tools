@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc.R
 \name{calc_duration}
 \alias{calc_duration}
-\title{Calculate Duration}
+\title{Calculate durations of time}
 \usage{
 calc_duration(start = NA, end = NA, units = NA)
 }
@@ -16,11 +16,11 @@ calc_duration(start = NA, end = NA, units = NA)
 }
 \value{
 If 'units' specified, returns numeric. If 'units' unspecified,
-returns a lubridate duration object (i.e. units in seconds).
+returns an object of class '\code{\link[lubridate:Duration-class]{Duration}}'.
 }
 \description{
-Returns the duration of time between two provided date objects.
-Supports vectorized data (i.e. dplyr::mutate()).
+Calculates the duration of time between two provided date objects.
+Supports vectorized data (i.e. \code{\link[dplyr:mutate]{dplyr::mutate()}}).
 }
 \note{
 Supports multiple calculations against a single time point (i.e.

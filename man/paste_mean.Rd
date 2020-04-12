@@ -2,7 +2,7 @@
 % Please edit documentation in R/paste.R
 \name{paste_mean}
 \alias{paste_mean}
-\title{Paste Mean}
+\title{Paste mean}
 \usage{
 paste_mean(x = NA, less.than.one = FALSE, digits = 1)
 }
@@ -18,7 +18,7 @@ be printed as <1.}
 A character vector of the mean(s) with standard deviation(s).
 }
 \description{
-Returns a human-readable mean with standard deviation
+Creates a human-readable mean with standard deviation
 from numeric data.
 }
 \examples{

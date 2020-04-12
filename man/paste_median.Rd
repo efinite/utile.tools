@@ -2,7 +2,7 @@
 % Please edit documentation in R/paste.R
 \name{paste_median}
 \alias{paste_median}
-\title{Paste Median}
+\title{Paste median}
 \usage{
 paste_median(x = NA, less.than.one = FALSE, digits = 1)
 }
@@ -18,8 +18,7 @@ be printed as <1.}
 A character vector of the median(s) with interquartile range(s).
 }
 \description{
-Returns a human-readable median with inter-quartile
-range from numeric data.
+Creates a human-readable median with inter-quartile range from numeric data.
 }
 \examples{
 paste_median(mtcars$mpg)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc.R
 \name{calc_chunks}
 \alias{calc_chunks}
-\title{Calculate indices of data "chunks" in a data object}
+\title{Calculate data chunk indices}
 \usage{
 calc_chunks(data = NULL, size = 10, reverse = FALSE)
 }

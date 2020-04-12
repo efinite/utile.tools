@@ -1,5 +1,16 @@
-# utile.tools 0.2.5
+# utile.tools 0.3.0 (previously 0.2.5)
 * Added `paste()` & `paste0()`. Base functions with added option for NA removal. Default behavior identical to base functions.
+* [BREAKING] Renamed `tabulate_model()` to `tabulate_coef()` to make purpose clearer.
+* [BREAKING] Complete rewrite of `tabulate_coef()`
+  - Removed unnecessary complexity from inner functions.
+  - All methods now consistently use `stats::drop1()` when testing model variables.
+  - Inclusion of `stats::drop1()` testing results is now optional.
+  - Added new parameter 'level' to allow setting of confidence level.
+  - Tables now include the test statistic and name of statistical test used to obtain the statistic and p-value.
+  - Preparations made for the addition of LME support.
+* Eliminated `stringr` dependency.
+* Overhauled documentation.
+
 
 # utile.tools 0.2.4
 * `calc_duration()`: Now supports the return of a `lubridate::duration()` object when the units parameter is left unspecified.
