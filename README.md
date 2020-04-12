@@ -7,8 +7,8 @@ Tools for preparing and summarizing data for publication purposes. Includes func
 
 ## Verbs
 ### Tabulate
-- `tabulate_model()`: Converts parameters from a model object into a usable table for publication purposes. By default, formats the table into a human-readable/exportable form.
-- `tabulate_at_risk()`: Returns a risk table from a model object and specified time points.
+- `tabulate_coef()`: Converts parameters from a model object into a usable table for publication purposes. Includes optional formatting of table to a human-readable/exportable form.
+- `tabulate_at_risk()`: Creates a risk table from a model object and specified time points.
 
 ### Paste
 - `paste()` & `paste0`: The base functions with an added 'na.rm' parameter for nested NA removal. Default function behavior is identical to base counterparts.
