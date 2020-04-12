@@ -14,7 +14,6 @@ Imports: tibble,
     dplyr,
     lubridate,
     purrr,
-    stringr
 Suggests:
     survival,
     MASS

@@ -461,7 +461,7 @@ tabulate_at_risk <- function(fit = NULL, times = NULL) {
       else
         purrr::map_chr(
           fit_summary$strata,
-          function(x) stringr::str_split(x, '=')[[1]][2]
+          ~ strsplit(.x, '=')[[1]][2]
         )
     ),
     time = fit_summary$time,
