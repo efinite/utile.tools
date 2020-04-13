@@ -200,18 +200,7 @@ tabulate_coef.coxph <- function (
     # Model testing
     tests = .tidy_tests(
       stats::drop1(
-
-        # Remove NA values from model data
-        stats::update(
-          fit,
-          data = stats::na.omit(
-            get(
-              as.character(stats::getCall(fit)$data),
-              environment(stats::formula(fit))
-            )[all.vars(stats::formula(fit))]
-          )
-        ),
-
+        .refit_model(fit), # remove NA data
         test = 'Chisq'
       ),
       3:4,

@@ -48,6 +48,27 @@ utils::globalVariables(c(
 
 }
 
+# Clean data and formula environment
+.refit_model <- function(fit) {
+
+  # Get model call
+  call <- stats::getCall(fit)
+
+  # Purge formula environment
+  call$formula <- stats::as.formula(deparse(stats::formula(fit)))
+
+  # Remove NA's from data
+  call$data <- stats::na.omit(
+    get(
+      as.character(call$data),
+      environment(stats::formula(fit))
+    )[all.vars(stats::formula(fit))]
+  )
+
+  # Refit and return
+  eval(call, parent.frame())
+}
+
 # Format prepared coefficient table
 .format_table <- function(table, estimate, level, digits, p.digits) {
 
