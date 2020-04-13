@@ -167,7 +167,7 @@ paste <- function(..., sep = ' ', collapse = NULL, na.rm = FALSE) {
 #' @rdname paste
 #' @export
 paste0 <- function(..., collapse = NULL, na.rm = FALSE) {
-  x <- list(..., collapse = NULL)
+  x <- list(..., collapse = collapse)
   if (na.rm) x <- purrr::map(x[!is.na(x)], ~ .x[!is.na(.x)])
   do.call(base::paste0, x)
 }
