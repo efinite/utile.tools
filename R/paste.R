@@ -45,7 +45,7 @@ paste_freq <- function(num = NA, den = NA, percent.sign = TRUE, digits = 1) {
   purrr::map2_chr(
     num, den,
     function(x, y)
-      if (any(is.na(c(x,y))) | !any(is.numeric(c(x,y)))) NA
+      if (any(is.na(c(x,y))) | !any(is.numeric(c(x,y)))) as.character(NA)
       else paste0(x, ' (', round((x / y) * 100, digits = digits), if (percent.sign & !is.infinite(x / y)) '%' else NULL, ')')
   )
 }
@@ -115,7 +115,7 @@ paste_mean <- function(x = NA, less.than.one = FALSE, digits = 1) {
 #' paste_efs(fit, c(1, 3, 5))
 #' @export
 paste_efs <- function(fit = NA, times = NA, percent.sign = TRUE, digits = 1) {
-  if (all(is.na(times)) | class(fit) != 'survfit' | !all(is.numeric(times))) NA
+  if (all(is.na(times)) | class(fit) != 'survfit' | !all(is.numeric(times))) as.character(NA)
   else {
     results <- summary(fit, times = times)
     estimate <- round(results$surv * 100, digits = digits)
