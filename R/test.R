@@ -50,7 +50,7 @@ test_hypothesis.numeric <- function(x = NA, y = NA, parametric = FALSE, digits =
     else if (parametric) summary(stats::aov(x ~ y))[[1]][[1,"Pr(>F)"]]
     else stats::kruskal.test(x ~ y)$p.value
     format.pval(pv = pv, digits = digits, eps = 0.0001, nsmall = p.digits, scientific = F)
-  } else NA
+  } else as.character(NA)
 }
 
 
@@ -75,7 +75,7 @@ test_hypothesis.factor <- function(x = NA, y = NA, parametric = FALSE, digits = 
         stats::fisher.test(x, y, simulate.p.value = TRUE)$p.value
       }
     format.pval(pv = pv, digits = digits, eps = 1e-04, nsmall = p.digits, scientific = F)
-  } else NA
+  } else as.character(NA)
 }
 
 #' @export
