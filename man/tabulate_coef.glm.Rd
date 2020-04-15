@@ -57,7 +57,7 @@ outputs (i.e. exportable tables). All model variables and their respective
 levels, not simply model terms, are reported including the reference level
 for factors with 3 or more levels. A test statistic is also calculated for
 each factor variable with multiple "dummy variables". Variable statistics
-can also be overwritten with model \code{\link[stats]{drop1}} test
+can also be overwritten with model \code{\link[stats:add1]{stats::drop1}} test
 statistics. Methods are also provided for the return of a fully-formatted
 export-ready table.
 }

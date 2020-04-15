@@ -9,7 +9,7 @@
 #' levels, not simply model terms, are reported including the reference level
 #' for factors with 3 or more levels. A test statistic is also calculated for
 #' each factor variable with multiple "dummy variables". Variable statistics
-#' can also be overwritten with model \code{\link[stats]{drop1}} test
+#' can also be overwritten with model \code{\link[stats:add1]{stats::drop1}} test
 #' statistics. Methods are also provided for the return of a fully-formatted
 #' export-ready table.
 #' @param fit Required. Model object. See S3 methods below.
@@ -134,7 +134,7 @@ tabulate_coef.default <- function(fit = NULL, ...)
 #' levels, not simply model terms, are reported including the reference level
 #' for factors with 3 or more levels. A test statistic is also calculated for
 #' each factor variable with multiple "dummy variables". Variable statistics
-#' can also be overwritten with model \code{\link[stats]{drop1}} test
+#' can also be overwritten with model \code{\link[stats:add1]{stats::drop1}} test
 #' statistics. Methods are also provided for the return of a fully-formatted
 #' export-ready table.
 #' @param fit Required. An object of class
@@ -236,7 +236,7 @@ tabulate_coef.coxph <- function (
 #' levels, not simply model terms, are reported including the reference level
 #' for factors with 3 or more levels. A test statistic is also calculated for
 #' each factor variable with multiple "dummy variables". Variable statistics
-#' can also be overwritten with model \code{\link[stats]{drop1}} test
+#' can also be overwritten with model \code{\link[stats:add1]{stats::drop1}} test
 #' statistics. Methods are also provided for the return of a fully-formatted
 #' export-ready table.
 #' @param fit Required. An object of class '\code{\link[stats]{glm}}'.
@@ -343,7 +343,7 @@ tabulate_coef.glm <- function (
 #' levels, not simply model terms, are reported including the reference level
 #' for factors with 3 or more levels. A test statistic is also calculated for
 #' each factor variable with multiple "dummy variables". Variable statistics
-#' can also be overwritten with model \code{\link[stats]{drop1}} test
+#' can also be overwritten with model \code{\link[stats:add1]{stats::drop1}} test
 #' statistics. Methods are also provided for the return of a fully-formatted
 #' export-ready table.
 #' @param fit Required. An object of class '\code{\link[stats]{lm}}'.
