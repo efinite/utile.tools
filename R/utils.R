@@ -24,9 +24,9 @@ utils::globalVariables(c(
   dplyr::mutate(
     table,
     test = test,
-    estimate = func(estimate),
     conf.low = func(estimate + std.error*levels[1]),
-    conf.high = func(estimate + std.error*levels[2])
+    conf.high = func(estimate + std.error*levels[2]),
+    estimate = func(estimate)
   )
 
 }
