@@ -4,6 +4,14 @@ utils::globalVariables(c(
   'std.error', 'conf.low', 'conf.high', 'p'
 ))
 
+# Aggregate certain object types into a count
+.count_items <- function (x, na.rm) {
+  if ('data.frame' %in% class(x)) nrow(x)
+  else if (!all(is.numeric(x))) length(if (na.rm) stats::na.omit(x) else x)
+  else if (length(x) == 0) 0
+  else x
+}
+
 # Tidy model assignments
 .tidy_assigns <- function (x, y) purrr::set_names(purrr::imap(x, ~ which(.y - 1 == y)), x)
 

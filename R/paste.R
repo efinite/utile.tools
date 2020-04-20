@@ -1,17 +1,17 @@
 #' @title Paste frequency
 #' @description
-#' Creates a human-readable frequency from count(able) data. Supports
-#' vectorized data (i.e. \code{\link[dplyr:mutate]{dplyr::mutate()}}).
-#' @param num Optional. Tibble, Numeric, or Non-Numeric. The numerator.
-#' Tibbles and non-numeric data are automatically tallied (nrow or length).
-#' @param den Optional. Tibble, Numeric, or Non-Numeric. The denominator.
-#' Tibbles and non-numeric data are automatically tallied (nrow or length). May use
-#' a single denominator for multiple numerators or one denominator for each
+#' Creates a human-readable frequency from count(able) data. Automatically
+#' tallies non-numeric data types (nrow or length) and supports vectorized data
+#' methods.
+#' @param x Data.frame, numeric, or non-numeric. The numerator.
+#' @param y Data.frame, numeric, or non-numeric. The denominator. A single
+#' denominator may be used for multiple numerators or one denominator for each
 #' numerator.
-#' @param percent.sign Optional. Logical. Indicates percent sign should be printed
-#' for frequencies.
-#' @param digits Optional. Integer. Number of digits to round to.
-#' @return A character vector of the count(s) with frequenc(y|-ies).
+#' @param na.rm Logical. Whether to ignore NA's when tallying non-numeric data.
+#' @param percent.sign Logical. Indicates percent sign should be printed
+#' with frequencies.
+#' @param digits Integer. Number of digits to round to.
+#' @return A character vector of count(s) with frequencies.
 #' @examples
 #' library(tibble)
 #'
@@ -28,26 +28,33 @@
 #' # Single denominator for multiple numerators
 #' paste_freq(c(10,20,30), 100)
 #' @export
-paste_freq <- function(num = NA, den = NA, percent.sign = TRUE, digits = 1) {
+paste_freq <- function(x, y, na.rm = TRUE, percent.sign = TRUE, digits = 1) {
+
   # Data aggregation
-  if ('data.frame' %in% class(num)) num <- nrow(num)
-  if ('data.frame' %in% class(den)) den <- nrow(den)
-  if (!all(is.numeric(num)) & (is.vector(num) | is.factor(num)) & !all(is.na(num)))
-    num <- length(stats::na.omit(num))
-  if (!all(is.numeric(den)) & (is.vector(den) | is.factor(den)) & !all(is.na(den)))
-    den <- length(stats::na.omit(den))
+  x <- .count_items(x, na.rm = na.rm)
+  y <- .count_items(y, na.rm = na.rm)
 
   # Hard stops
-  if (length(num) != length(den) & length(den) != 1)
-    stop('Numerator(s) and denominator(s) of incompatable lengths. [param: num, den]')
+  if (length(x) != length(y) & length(y) != 1)
+    stop('Numerator [\'x\'] and denominator [\'y\'] have incompatable lengths.')
 
   # Create frequencies
   purrr::map2_chr(
-    num, den,
-    function(x, y)
-      if (any(is.na(c(x,y))) | !any(is.numeric(c(x,y)))) as.character(NA)
-      else paste0(x, ' (', round((x / y) * 100, digits = digits), if (percent.sign & !is.infinite(x / y)) '%' else NULL, ')')
+    x, y,
+    ~ {
+      if (any(is.na(c(.x,.y))) | !any(is.numeric(c(.x,.y)))) as.character(NA)
+      else {
+        paste0(
+          .x,
+          ' (',
+          round((.x / .y) * 100, digits = digits),
+          if (percent.sign & !is.infinite(.x / .y)) '%' else NULL,
+          ')'
+        )
+      }
+    }
   )
+
 }
 
 
