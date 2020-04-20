@@ -42,7 +42,7 @@ test_hypothesis.default <- function (x, y, parametric, digits, p.digits) as.char
 # Numeric testing methods
 #' @export
 test_hypothesis.numeric <- function(x = NA, y = NA, parametric = FALSE, digits = 1, p.digits = 4) {
-  unique_lvl <- length(unique(y[!is.na(x)]))
+  unique_lvl <- length(stats::na.omit(unique(y[!is.na(x)])))
   if (is.factor(y) & unique_lvl >= 2) {
     pv <- if (unique_lvl == 2)
       if (parametric) stats::t.test(formula = x ~ y, alternative = 'two.sided')$p.value
