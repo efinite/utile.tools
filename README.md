@@ -7,7 +7,6 @@ Tools for preparing and summarizing data for publication purposes. Includes func
 
 ## Verbs
 ### Tabulate
-- `tabulate_coef()`: Converts parameters from a model object into a usable table for publication purposes. Includes optional formatting of table to a human-readable/exportable form.
 - `tabulate_at_risk()`: Creates a risk table from a model object and specified time points.
 
 ### Paste
