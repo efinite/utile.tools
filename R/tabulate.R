@@ -15,11 +15,12 @@ tabulate_at_risk <- function(fit = NULL, times = NULL) {
   tibble::tibble(
     strata = as.factor(
       if (is.null(fit$strata)) 'All'
-      else
+      else {
         purrr::map_chr(
-          fit_summary$strata,
+          as.character(fit_summary$strata),
           ~ strsplit(.x, '=')[[1]][2]
         )
+      }
     ),
     time = fit_summary$time,
     n.risk = fit_summary$n.risk,
