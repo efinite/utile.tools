@@ -12,7 +12,7 @@
 #' @export
 tabulate_at_risk <- function(fit = NULL, times = NULL) {
   fit_summary <- summary(fit, times = times)
-  tibble::tibble(
+  dplyr::bind_cols(
     strata = as.factor(
       if (is.null(fit$strata)) 'All'
       else {

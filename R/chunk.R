@@ -29,7 +29,7 @@ chunk_data_ <- function(data = NULL, size = 10, reverse = FALSE) {
   function() {
     index <<- index + 1
     if (index <= length(chunks))
-      if (tibble::is_tibble(data) | is.data.frame(data)) data[chunks[[index]],]
+      if (is.data.frame(data)) data[chunks[[index]],]
       else data[chunks[[index]]]
     else NULL
   }

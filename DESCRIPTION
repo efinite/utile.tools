@@ -13,8 +13,8 @@ Depends:
 Imports: 
   dplyr,
   lubridate,
-  purrr,
-  tibble
+  purrr
 Suggests:
-  survival
+  survival,
+  tibble
 RoxygenNote: 7.1.0

@@ -75,15 +75,15 @@ calc_duration <- function(start = NA, end = NA, units = NA) {
 calc_chunks <- function(data = NULL, size = 10, reverse = FALSE) {
 
   # Hard stops
-  if (is.null(data) | (!tibble::is_tibble(data) & !is.data.frame(data) & !is.vector(data)))
+  if (is.null(data) | (!is.data.frame(data) & !is.vector(data)))
     stop('Invalid data type provided. [check: \'data\']')
   if (!is.numeric(size) | size < 1)
     stop('Invalid data type provided. [check: \'size\']')
 
   # Variables
   item_cnt <-
-    if (tibble::is_tibble(data) | is.data.frame(data)) nrow(data)
-  else length(data)
+    if (is.data.frame(data)) nrow(data)
+    else length(data)
   if (size > item_cnt) size <- item_cnt
 
   # Calculate and return chunks
