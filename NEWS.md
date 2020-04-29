@@ -4,7 +4,6 @@
 * Pruned dependency list.
 * Overhauled documentation.
 
-
 # utile.tools 0.2.4
 * `calc_duration()`: Now supports the return of a `lubridate::duration()` object when the units parameter is left unspecified.
 
