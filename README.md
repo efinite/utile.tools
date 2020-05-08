@@ -6,9 +6,6 @@
 Tools for preparing and summarizing data for publication purposes. Includes functions for tabulating models, producing human-readable summary statistics from raw data, macros for calculating duration of time, and simplistic hypothesis testing tools.
 
 ## Verbs
-### Tabulate
-- `tabulate_at_risk()`: Creates a risk table from a model object and specified time points.
-
 ### Paste
 - `paste()` & `paste0`: The base functions with an added 'na.rm' parameter for nested NA removal. Default function behavior is identical to base counterparts.
 - `paste_freq()`: Pastes a human-readable frequency from count(able) data. Handily has methods for several types of data.

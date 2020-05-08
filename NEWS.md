@@ -1,3 +1,6 @@
+# utile.tools 0.2.6
+* Final tabulate function, `tabulate_at_risk()`, removed after being internalized by `utile.visuals` package.
+
 # utile.tools 0.2.5
 * Added `paste()` & `paste0()`. Base functions with added option for NA removal. Default behavior identical to base functions.
 * Removed `tabulate_model()`. Feature parity has been provided in `utile.tables::build_table()`.
