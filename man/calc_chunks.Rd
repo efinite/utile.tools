@@ -4,10 +4,10 @@
 \alias{calc_chunks}
 \title{Calculate data chunk indices}
 \usage{
-calc_chunks(data = NULL, size = 10, reverse = FALSE)
+calc_chunks(x = NULL, size = 10, reverse = FALSE)
 }
 \arguments{
-\item{data}{Required. Tibble, data frame, vector.}
+\item{x}{Tibble, data frame, vector.}
 
 \item{size}{Optional. Integer. The number of items (e.g. rows in a tibble)
 that make up a given chunk. Must be a positive integer. Caps out at data
