@@ -10,13 +10,13 @@ paste(..., sep = " ", collapse = NULL, na.rm = FALSE)
 paste0(..., collapse = NULL, na.rm = FALSE)
 }
 \arguments{
-\item{...}{Required. R objects to be converted to character vectors.}
+\item{...}{R objects to be converted to character vectors.}
 
-\item{sep}{Optional. Character. A string to separate the terms.}
+\item{sep}{A character. A string to separate the terms.}
 
-\item{collapse}{Optional. Character. An string to separate the results.}
+\item{collapse}{A character. An string to separate the results.}
 
-\item{na.rm}{Optional. Logical. Whether to remove NA values from 'x'.
+\item{na.rm}{A logical. Whether to remove NA values from 'x'.
 Note that NA values are also removed from vectors.}
 }
 \value{

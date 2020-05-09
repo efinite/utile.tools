@@ -4,14 +4,14 @@
 \alias{calc_duration}
 \title{Calculate durations of time}
 \usage{
-calc_duration(x = NULL, y = NULL, units = NA)
+calc_duration(x, y, units = NULL)
 }
 \arguments{
-\item{x}{Date or POSIXt object. The start date/timestamp.}
+\item{x}{A date or datetime. The start date(s)/timestamp(s).}
 
-\item{y}{Date or POSIXt object. The end date/timestamp.}
+\item{y}{A date or datetime. The end date(s)/timestamp(s).}
 
-\item{units}{Optional. Character. Units of the returned duration
+\item{units}{A character. Units of the returned duration
 (i.e. 'seconds', 'days', 'years').}
 }
 \value{

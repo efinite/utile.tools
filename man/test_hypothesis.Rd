@@ -7,20 +7,20 @@
 test_hypothesis(x, y, parametric, digits, p.digits)
 }
 \arguments{
-\item{x}{Required. Numeric or Factor. Observations.}
+\item{x}{A numeric or factor. Observations.}
 
-\item{y}{Required. Factor. Factor to stratify by.}
+\item{y}{A factor. Factor to stratify by.}
 
-\item{parametric}{Optional. Logical. Indicates parametric testing should be used.
+\item{parametric}{A logical. Indicates parametric testing should be used.
 See note detailing statistical tests.}
 
-\item{digits}{Optional. Integer. Number of digits to round to.}
+\item{digits}{An integer. Number of digits to round to.}
 
-\item{p.digits}{Optional. Integer. Number of p-value digits to print. Note that
+\item{p.digits}{An integer. Number of p-value digits to print. Note that
 p-values are still rounded using 'digits'.}
 }
 \value{
-Character. Formatted p-value.
+A character formatted p-value.
 }
 \description{
 Produces a p-value from parametric or non-parametric testing of the

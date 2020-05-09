@@ -4,15 +4,15 @@
 \alias{chunk_data_}
 \title{Break data into chunks}
 \usage{
-chunk_data_(x = NULL, size = 10, reverse = FALSE)
+chunk_data_(x, size = 10, reverse = FALSE)
 }
 \arguments{
-\item{x}{Tibble, data frame, vector.}
+\item{x}{A data frame or vector.}
 
-\item{size}{Optional. Integer. The number of items (e.g. rows in a tibble)
+\item{size}{An integer. The number of items (e.g. rows in a tibble)
 that make up a given chunk. Must be a positive integer.}
 
-\item{reverse}{Optional. Logical. Calculate chunks from back to front.}
+\item{reverse}{A logical. Calculate chunks from back to front.}
 }
 \value{
 A factory function which returns a chunk of data from the provided

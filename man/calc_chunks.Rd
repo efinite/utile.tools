@@ -4,16 +4,16 @@
 \alias{calc_chunks}
 \title{Calculate data chunk indices}
 \usage{
-calc_chunks(x = NULL, size = 10, reverse = FALSE)
+calc_chunks(x, size = 10, reverse = FALSE)
 }
 \arguments{
-\item{x}{Tibble, data frame, vector.}
+\item{x}{A data frame or vector.}
 
-\item{size}{Optional. Integer. The number of items (e.g. rows in a tibble)
+\item{size}{An integer. The number of items (e.g. rows in a tibble)
 that make up a given chunk. Must be a positive integer. Caps out at data
 maximum.}
 
-\item{reverse}{Optional. Logical. Calculate chunks from back to front.}
+\item{reverse}{A logical. Calculate chunks from back to front.}
 }
 \value{
 An iterable list of row indices for each chunk of data.

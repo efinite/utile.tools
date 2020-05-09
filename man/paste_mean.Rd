@@ -4,15 +4,15 @@
 \alias{paste_mean}
 \title{Paste mean}
 \usage{
-paste_mean(x = NA, less.than.one = FALSE, digits = 1)
+paste_mean(x, less.than.one = FALSE, digits = 1)
 }
 \arguments{
-\item{x}{Required. Numeric. Data to summarize.}
+\item{x}{A numeric. Data to summarize.}
 
-\item{less.than.one}{Optional. Logical. Indicates a mean that rounds to 0 should
+\item{less.than.one}{A logical. Indicates a mean that rounds to 0 should
 be printed as <1.}
 
-\item{digits}{Optional. Integer. Number of digits to round to.}
+\item{digits}{An integer. Number of digits to round to.}
 }
 \value{
 A character vector of the mean(s) with standard deviation(s).

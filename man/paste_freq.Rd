@@ -7,18 +7,18 @@
 paste_freq(x, y, na.rm = TRUE, percent.sign = TRUE, digits = 1)
 }
 \arguments{
-\item{x}{Data.frame, numeric, or non-numeric. The numerator.}
+\item{x}{A data.frame, numeric, or non-numeric. The numerator.}
 
-\item{y}{Data.frame, numeric, or non-numeric. The denominator. A single
+\item{y}{A data.frame, numeric, or non-numeric. The denominator. A single
 denominator may be used for multiple numerators or one denominator for each
 numerator.}
 
-\item{na.rm}{Logical. Whether to ignore NA's when tallying non-numeric data.}
+\item{na.rm}{A logical. Whether to ignore NA's when tallying non-numeric data.}
 
-\item{percent.sign}{Logical. Indicates percent sign should be printed
+\item{percent.sign}{A logical. Indicates percent sign should be printed
 with frequencies.}
 
-\item{digits}{Integer. Number of digits to round to.}
+\item{digits}{An integer. Number of digits to round to.}
 }
 \value{
 A character vector of count(s) with frequencies.
@@ -32,7 +32,7 @@ methods.
 # Numeric
 paste_freq(20, 100)
 
-# Tibble
+# data.frame
 df <- data.frame(x = c(1:100), y = TRUE)
 paste_freq(df[1:20,], df)
 

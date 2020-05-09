@@ -4,19 +4,18 @@
 \alias{paste_efs}
 \title{Paste event-free survival}
 \usage{
-paste_efs(fit = NA, times = NA, percent.sign = TRUE, digits = 1)
+paste_efs(x, times, percent.sign = TRUE, digits = 1)
 }
 \arguments{
-\item{fit}{Required. An object of class '\code{\link[survival]{Surv}}'. The
-time-to-event model of interest.}
+\item{x}{A \code{\link[survival]{survfit}} object. The survival model.}
 
-\item{times}{Required. Numeric. Indicates duration of time-points of interest.
-Units are whatever was used to create the time-to-event model.}
+\item{times}{A numeric. Indicates time-points of interest. Units are whatever
+was used to create the survival fit.}
 
-\item{percent.sign}{Optional. Logical. Indicates percent sign should be printed
+\item{percent.sign}{A logical. Indicates percent sign should be printed
 for frequencies.}
 
-\item{digits}{Optional. Integer. Number of digits to round to.}
+\item{digits}{Integer. Number of digits to round to.}
 }
 \value{
 A character vector of event free survival(s).
