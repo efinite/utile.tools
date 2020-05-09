@@ -70,7 +70,7 @@ paste_median <- function(x = NA, less.than.one = FALSE, digits = 1) {
   if (all(is.na(x)) | !all(is.numeric(x))) as.character(NA)
   else {
     estimate <- round(x = stats::median(x, na.rm = TRUE), digits = digits)
-    if (round(estimate, digits = digits) == 0 & less.than.one) estimate <- '<1'
+    if (estimate == 0 & less.than.one) estimate <- '<1'
     precision <- round(x = stats::quantile(x, probs = c(0.25, 0.75), na.rm = TRUE), digits = digits)
     paste0(estimate, ' [', paste0(precision, collapse = '-'), ']')
   }
