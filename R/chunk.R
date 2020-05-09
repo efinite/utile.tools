@@ -2,7 +2,7 @@
 #' @description
 #' Creates a factory function which returns a different chunk
 #' of a given data object with each function call.
-#' @param data Required. Tibble, data frame, vector.
+#' @param x Tibble, data frame, vector.
 #' @param size Optional. Integer. The number of items (e.g. rows in a tibble)
 #' that make up a given chunk. Must be a positive integer.
 #' @param reverse Optional. Logical. Calculate chunks from back to front.
@@ -19,19 +19,17 @@
 #' # Chunk #2 (rows 7-12)
 #' paste0(rownames(chunked_data()), collapse = ', ')
 #' @export
-chunk_data_ <- function(data = NULL, size = 10, reverse = FALSE) {
+chunk_data_ <- function(x = NULL, size = 10, reverse = FALSE) {
 
   # Calculate chunks & check hard stops
-  chunks <- calc_chunks(data = data, size = size, reverse = reverse)
+  chunks <- calc_chunks(x = x, size = size, reverse = reverse)
 
   # Return factory function
   index <- 0
-  function() {
-    index <<- index + 1
-    if (index <= length(chunks))
-      if (is.data.frame(data)) data[chunks[[index]],]
-      else data[chunks[[index]]]
-    else NULL
+  function () {
+    if ((index <<- index + 1) <= vctrs::vec_size(chunks)) {
+      vctrs::vec_slice(x, chunks[[index]])
+    } else NULL
   }
 
 }

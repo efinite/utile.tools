@@ -4,10 +4,10 @@
 \alias{chunk_data_}
 \title{Break data into chunks}
 \usage{
-chunk_data_(data = NULL, size = 10, reverse = FALSE)
+chunk_data_(x = NULL, size = 10, reverse = FALSE)
 }
 \arguments{
-\item{data}{Required. Tibble, data frame, vector.}
+\item{x}{Tibble, data frame, vector.}
 
 \item{size}{Optional. Integer. The number of items (e.g. rows in a tibble)
 that make up a given chunk. Must be a positive integer.}
