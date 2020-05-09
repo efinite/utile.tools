@@ -3,20 +3,20 @@
 #' Creates a human-readable frequency from count(able) data. Automatically
 #' tallies non-numeric data types (nrow or length) and supports vectorized data
 #' methods.
-#' @param x Data.frame, numeric, or non-numeric. The numerator.
-#' @param y Data.frame, numeric, or non-numeric. The denominator. A single
+#' @param x A data.frame, numeric, or non-numeric. The numerator.
+#' @param y A data.frame, numeric, or non-numeric. The denominator. A single
 #' denominator may be used for multiple numerators or one denominator for each
 #' numerator.
-#' @param na.rm Logical. Whether to ignore NA's when tallying non-numeric data.
-#' @param percent.sign Logical. Indicates percent sign should be printed
+#' @param na.rm A logical. Whether to ignore NA's when tallying non-numeric data.
+#' @param percent.sign A logical. Indicates percent sign should be printed
 #' with frequencies.
-#' @param digits Integer. Number of digits to round to.
+#' @param digits An integer. Number of digits to round to.
 #' @return A character vector of count(s) with frequencies.
 #' @examples
 #' # Numeric
 #' paste_freq(20, 100)
 #'
-#' # Tibble
+#' # data.frame
 #' df <- data.frame(x = c(1:100), y = TRUE)
 #' paste_freq(df[1:20,], df)
 #'
@@ -26,7 +26,7 @@
 #' # Single denominator for multiple numerators
 #' paste_freq(c(10,20,30), 100)
 #' @export
-paste_freq <- function(x, y, na.rm = TRUE, percent.sign = TRUE, digits = 1) {
+paste_freq <- function (x, y, na.rm = TRUE, percent.sign = TRUE, digits = 1) {
 
   # Data aggregation
   x <- .count_items(x, na.rm = na.rm)
