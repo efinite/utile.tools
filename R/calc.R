@@ -73,11 +73,11 @@ calc_duration <- function(x, y, units = NULL) {
 #' @description
 #' Calculates chunk indices of a data object
 #' for a given chunk size (number of items per chunk).
-#' @param x Tibble, data frame, vector.
-#' @param size Optional. Integer. The number of items (e.g. rows in a tibble)
+#' @param x A data frame or vector.
+#' @param size An integer. The number of items (e.g. rows in a tibble)
 #' that make up a given chunk. Must be a positive integer. Caps out at data
 #' maximum.
-#' @param reverse Optional. Logical. Calculate chunks from back to front.
+#' @param reverse A logical. Calculate chunks from back to front.
 #' @return An iterable list of row indices for each chunk of data.
 #' @examples
 #' # Create chunk map for a data frame
@@ -86,13 +86,13 @@ calc_duration <- function(x, y, units = NULL) {
 #' # Iterate through chunks of data
 #' for (chunk in chunks) print(paste0(rownames(mtcars[chunk,]), collapse = ', '))
 #' @export
-calc_chunks <- function(x = NULL, size = 10, reverse = FALSE) {
+calc_chunks <- function(x, size = 10, reverse = FALSE) {
 
   # Hard stops
-  if (is.null(x) | (!is.data.frame(x) & !is.vector(x)))
-    stop('Invalid data type provided. [check: \'data\']')
+  if (!is.data.frame(x) & !is.vector(x))
+    stop('\'x\' not a <data.frame> or vector.')
   if (!is.numeric(size) | size < 1)
-    stop('Invalid data type provided. [check: \'size\']')
+    stop('\'size\' not <numeric> or less than 1.')
 
   # Variables
   item_cnt <- vctrs::vec_size(x)
