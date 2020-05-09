@@ -110,13 +110,12 @@ paste_mean <- function (x, less.than.one = FALSE, digits = 1) {
 #' @description
 #' Creates a human-readable event-free-survival from a survfit object
 #' and a specified time point.
-#' @param fit Required. An object of class '\code{\link[survival]{Surv}}'. The
-#' time-to-event model of interest.
-#' @param times Required. Numeric. Indicates duration of time-points of interest.
-#' Units are whatever was used to create the time-to-event model.
-#' @param percent.sign Optional. Logical. Indicates percent sign should be printed
+#' @param x A \code{\link[survival]{survfit}} object. The survival model.
+#' @param times A numeric. Indicates time-points of interest. Units are whatever
+#' was used to create the survival fit.
+#' @param percent.sign A logical. Indicates percent sign should be printed
 #' for frequencies.
-#' @param digits Optional. Integer. Number of digits to round to.
+#' @param digits Integer. Number of digits to round to.
 #' @return A character vector of event free survival(s).
 #' @examples
 #' library(survival)
@@ -124,14 +123,17 @@ paste_mean <- function (x, less.than.one = FALSE, digits = 1) {
 #' fit <- survfit(Surv(time, status) ~ 1, data = diabetic)
 #' paste_efs(fit, c(1, 3, 5))
 #' @export
-paste_efs <- function(fit = NA, times = NA, percent.sign = TRUE, digits = 1) {
-  if (all(is.na(times)) | class(fit) != 'survfit' | !all(is.numeric(times))) as.character(NA)
-  else {
-    results <- summary(fit, times = times)
+paste_efs <- function (x, times, percent.sign = TRUE, digits = 1) {
+  if (!all(is.numeric(times)) | vctrs::vec_is_empty(times)) {
+    stop('\'times\' not <numeric> or is empty.')
+  } else if (class(x) != 'survfit' | !(x$type %in% c('right', 'left', 'interval'))) {
+    stop('\'x\' not <survfit> or fit does not estimate survival.')
+  } else {
+    results <- summary(x, times = times)
     estimate <- round(results$surv * 100, digits = digits)
     lower <- round(results$lower * 100, digits = digits)
     upper <- round(results$upper * 100, digits = digits)
-    paste0(estimate, if (percent.sign) '%' else NULL, ' [', lower, '-', upper, ']')
+    paste0(estimate, if (percent.sign) '%', ' [', lower, '-', upper, ']')
   }
 }
 
