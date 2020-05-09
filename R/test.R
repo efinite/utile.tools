@@ -2,14 +2,14 @@
 #' @description
 #' Produces a p-value from parametric or non-parametric testing of the
 #' null hypothesis for stratified data.
-#' @param x Required. Numeric or Factor. Observations.
-#' @param y Required. Factor. Factor to stratify by.
-#' @param parametric Optional. Logical. Indicates parametric testing should be used.
+#' @param x A numeric or factor. Observations.
+#' @param y A factor. Factor to stratify by.
+#' @param parametric A logical. Indicates parametric testing should be used.
 #' See note detailing statistical tests.
-#' @param digits Optional. Integer. Number of digits to round to.
-#' @param p.digits Optional. Integer. Number of p-value digits to print. Note that
+#' @param digits An integer. Number of digits to round to.
+#' @param p.digits An integer. Number of p-value digits to print. Note that
 #' p-values are still rounded using 'digits'.
-#' @return Character. Formatted p-value.
+#' @return A character formatted p-value.
 #' @note Statistical testing used is dependent on type of 'x' data, number of
 #' levels in the factor 'y', and whether parametric/non-parametric testing is
 #' selected. For continuous 'x' data, parametric testing is Student's t-test
@@ -36,18 +36,18 @@ test_hypothesis <- function (x, y, parametric, digits, p.digits) {
 
 # Default response
 #' @export
-test_hypothesis.default <- function (x, y, parametric, digits, p.digits) as.character(NA)
+test_hypothesis.default <- function (...) as.character(NA)
 
 
 # Numeric testing methods
 #' @export
-test_hypothesis.numeric <- function(x = NA, y = NA, parametric = FALSE, digits = 1, p.digits = 4) {
-  unique_lvl <- length(stats::na.omit(unique(y[!is.na(x)])))
+test_hypothesis.numeric <- function(x, y, parametric = FALSE, digits = 1, p.digits = 4) {
+  unique_lvl <- vctrs::vec_size(stats::na.omit(unique(y[!is.na(x)])))
   if (is.factor(y) & unique_lvl >= 2) {
-    pv <- if (unique_lvl == 2)
-      if (parametric) stats::t.test(formula = x ~ y, alternative = 'two.sided')$p.value
+    pv <- if (unique_lvl == 2) {
+      if (parametric) stats::t.test(x ~ y, alternative = 'two.sided')$p.value
       else stats::wilcox.test(x ~ y, alternative = 'two.sided')$p.value
-    else if (parametric) summary(stats::aov(x ~ y))[[1]][[1,"Pr(>F)"]]
+    } else if (parametric) summary(stats::aov(x ~ y))[[1]][[1,"Pr(>F)"]]
     else stats::kruskal.test(x ~ y)$p.value
     format.pval(pv = pv, digits = digits, eps = 0.0001, nsmall = p.digits, scientific = F)
   } else as.character(NA)
@@ -56,18 +56,18 @@ test_hypothesis.numeric <- function(x = NA, y = NA, parametric = FALSE, digits =
 
 # Categorical testing methods
 #' @export
-test_hypothesis.factor <- function(x = NA, y = NA, parametric = FALSE, digits = 1, p.digits = 4) {
+test_hypothesis.factor <- function(x, y, parametric = FALSE, digits = 1, p.digits = 4) {
   contTable <- table(x, y)
   contTable <- contTable[rowSums(contTable) > 0, colSums(contTable) > 0, drop = FALSE]
   if (
-    is.factor(y) &
+    (is.factor(y) | is.logical(y)) &
     as.integer(nrow(contTable)) > 1L &
     as.integer(ncol(contTable)) > 1L &
-    length(stats::na.omit(unique(x))) > 1 &
-    length(stats::na.omit(unique(y))) > 1
+    vctrs::vec_size(stats::na.omit(unique(x))) > 1 &
+    vctrs::vec_size(stats::na.omit(unique(y))) > 1
   ) {
     pv <-
-      if (stats::na.omit(length(unique(x))) == 2) {
+      if (vctrs::vec_size(stats::na.omit(unique(x))) == 2) {
         if (parametric) stats::chisq.test(x, y)$p.value
         else stats::fisher.test(x, y)$p.value
       } else {
