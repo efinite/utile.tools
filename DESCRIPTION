@@ -15,6 +15,5 @@ Imports:
   purrr,
   vctrs
 Suggests:
-  survival,
-  tibble
+  survival
 RoxygenNote: 7.1.0
