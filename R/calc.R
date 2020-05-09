@@ -73,7 +73,7 @@ calc_duration <- function(x = NULL, y = NULL, units = NA) {
 #' @description
 #' Calculates chunk indices of a data object
 #' for a given chunk size (number of items per chunk).
-#' @param data Required. Tibble, data frame, vector.
+#' @param x Tibble, data frame, vector.
 #' @param size Optional. Integer. The number of items (e.g. rows in a tibble)
 #' that make up a given chunk. Must be a positive integer. Caps out at data
 #' maximum.
@@ -86,18 +86,16 @@ calc_duration <- function(x = NULL, y = NULL, units = NA) {
 #' # Iterate through chunks of data
 #' for (chunk in chunks) print(paste0(rownames(mtcars[chunk,]), collapse = ', '))
 #' @export
-calc_chunks <- function(data = NULL, size = 10, reverse = FALSE) {
+calc_chunks <- function(x = NULL, size = 10, reverse = FALSE) {
 
   # Hard stops
-  if (is.null(data) | (!is.data.frame(data) & !is.vector(data)))
+  if (is.null(x) | (!is.data.frame(x) & !is.vector(x)))
     stop('Invalid data type provided. [check: \'data\']')
   if (!is.numeric(size) | size < 1)
     stop('Invalid data type provided. [check: \'size\']')
 
   # Variables
-  item_cnt <-
-    if (is.data.frame(data)) nrow(data)
-    else length(data)
+  item_cnt <- vctrs::vec_size(x)
   if (size > item_cnt) size <- item_cnt
 
   # Calculate and return chunks
