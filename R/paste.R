@@ -58,20 +58,24 @@ paste_freq <- function (x, y, na.rm = TRUE, percent.sign = TRUE, digits = 1) {
 #' @title Paste median
 #' @description
 #' Creates a human-readable median with inter-quartile range from numeric data.
-#' @param x Required. Numeric. Data to summarize.
-#' @param less.than.one Optional. Logical. Indicates a median that rounds to 0 should
+#' @param x A numeric. Data to summarize.
+#' @param less.than.one A logical. Indicates a median that rounds to 0 should
 #' be printed as <1.
-#' @param digits Optional. Integer. Number of digits to round to.
+#' @param digits An integer. Number of digits to round to.
 #' @return A character vector of the median(s) with interquartile range(s).
 #' @examples
 #' paste_median(mtcars$mpg)
 #' @export
-paste_median <- function(x = NA, less.than.one = FALSE, digits = 1) {
+paste_median <- function (x, less.than.one = FALSE, digits = 1) {
   if (all(is.na(x)) | !all(is.numeric(x))) as.character(NA)
   else {
-    estimate <- round(x = stats::median(x, na.rm = TRUE), digits = digits)
-    if (estimate == 0 & less.than.one) estimate <- '<1'
-    precision <- round(x = stats::quantile(x, probs = c(0.25, 0.75), na.rm = TRUE), digits = digits)
+    estimate <- round(stats::median(x, na.rm = TRUE), digits = digits)
+    precision <- round(
+      stats::quantile(x, probs = c(0.25, 0.75), na.rm = TRUE),
+      digits = digits)
+
+    if (round(estimate, digits = 0) == 0 & less.than.one) estimate <- '<1'
+
     paste0(estimate, ' [', paste0(precision, collapse = '-'), ']')
   }
 }
