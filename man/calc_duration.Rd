@@ -4,12 +4,12 @@
 \alias{calc_duration}
 \title{Calculate durations of time}
 \usage{
-calc_duration(start = NA, end = NA, units = NA)
+calc_duration(x = NULL, y = NULL, units = NA)
 }
 \arguments{
-\item{start}{Required. Date or POSIXt object. The start date/timestamp.}
+\item{x}{Date or POSIXt object. The start date/timestamp.}
 
-\item{end}{Required. Date or POSIXt object. The end date/timestamp.}
+\item{y}{Date or POSIXt object. The end date/timestamp.}
 
 \item{units}{Optional. Character. Units of the returned duration
 (i.e. 'seconds', 'days', 'years').}
@@ -26,19 +26,32 @@ Supports vectorized data (i.e. \code{\link[dplyr:mutate]{dplyr::mutate()}}).
 Supports multiple calculations against a single time point (i.e.
 multiple start dates with a single end date). Note that start and end
 must otherwise be of the same length.
+
+When the start and end dates are of different types (i.e. x = date,
+y = datetime), a lossy cast will be performed which strips the datetime data
+of its time components. This is done to avoid an assumption of more time
+passing that would otherwise come with casting the date data to datetime.
 }
 \examples{
-# Timestamps
+library(lubridate)
+library(purrr)
+
+# Dates -> duration in years
 calc_duration(
-   start = as.POSIXct('01/01/1999 10:00', format = '\%m/\%d/\%Y \%H:\%M'),
-   end = as.POSIXct('01/01/2001 00:00', format = '\%m/\%d/\%Y \%H:\%M'),
-   units = 'days'
+  x = mdy(map_chr(sample(1:9, 5), ~ paste0('01/01/199', .x))),
+  y = mdy(map_chr(sample(1:9, 5), ~ paste0('01/01/200', .x))),
+  units = 'years'
 )
 
-# Dates
+# datetimes -> durations
 calc_duration(
-   start = as.Date('01/01/1999', format = '\%m/\%d/\%Y'),
-   end = as.Date('01/01/2001', format = '\%m/\%d/\%Y'),
-   units = 'years'
+  x = mdy_hm(map_chr(sample(1:9, 5), ~ paste0('01/01/199', .x, ' 1', .x, ':00'))),
+  y = mdy_hm(map_chr(sample(1:9, 5), ~ paste0('01/01/200', .x, ' 0', .x, ':00')))
+)
+
+# Mixed date classes -> durations
+calc_duration(
+  x = mdy(map_chr(sample(1:9, 5), ~ paste0('01/01/199', .x))),
+  y = mdy_hm(map_chr(sample(1:9, 5), ~ paste0('01/01/200', .x, ' 0', .x, ':00')))
 )
 }
