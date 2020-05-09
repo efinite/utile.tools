@@ -85,20 +85,22 @@ paste_median <- function (x, less.than.one = FALSE, digits = 1) {
 #' @description
 #' Creates a human-readable mean with standard deviation
 #' from numeric data.
-#' @param x Required. Numeric. Data to summarize.
-#' @param less.than.one Optional. Logical. Indicates a mean that rounds to 0 should
+#' @param x A numeric. Data to summarize.
+#' @param less.than.one A logical. Indicates a mean that rounds to 0 should
 #' be printed as <1.
-#' @param digits Optional. Integer. Number of digits to round to.
+#' @param digits An integer. Number of digits to round to.
 #' @return A character vector of the mean(s) with standard deviation(s).
 #' @examples
 #' paste_mean(mtcars$mpg)
 #' @export
-paste_mean <- function(x = NA, less.than.one = FALSE, digits = 1) {
+paste_mean <- function (x, less.than.one = FALSE, digits = 1) {
   if (all(is.na(x)) | !all(is.numeric(x))) as.character(NA)
   else {
-    estimate <- round(x = mean(x, na.rm = TRUE), digits = digits)
-    if (round(estimate, digits = digits) == 0 & less.than.one) estimate <- '<1'
-    precision <- round(x = stats::sd(x, na.rm = TRUE), digits = digits)
+    estimate <- round(mean(x, na.rm = TRUE), digits = digits)
+    precision <- round(stats::sd(x, na.rm = TRUE), digits = digits)
+
+    if (round(estimate, digits = 0) == 0 & less.than.one) estimate <- '<1'
+
     paste0(estimate, ' \u00B1', precision)
   }
 }
