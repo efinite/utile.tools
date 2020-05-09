@@ -12,7 +12,8 @@ Depends:
   R (>= 3.4.0)
 Imports: 
   lubridate,
-  purrr
+  purrr,
+  vctrs
 Suggests:
   survival,
   tibble
