@@ -2,9 +2,9 @@
 #' @description
 #' Calculates the duration of time between two provided date objects.
 #' Supports vectorized data (i.e. \code{\link[dplyr:mutate]{dplyr::mutate()}}).
-#' @param x Date or POSIXt object. The start date/timestamp.
-#' @param y Date or POSIXt object. The end date/timestamp.
-#' @param units Optional. Character. Units of the returned duration
+#' @param x A date or datetime. The start date(s)/timestamp(s).
+#' @param y A date or datetime. The end date(s)/timestamp(s).
+#' @param units A character. Units of the returned duration
 #' (i.e. 'seconds', 'days', 'years').
 #' @return If 'units' specified, returns numeric. If 'units' unspecified,
 #' returns an object of class '\code{\link[lubridate:Duration-class]{Duration}}'.
@@ -39,14 +39,14 @@
 #'   y = mdy_hm(map_chr(sample(1:9, 5), ~ paste0('01/01/200', .x, ' 0', .x, ':00')))
 #' )
 #' @export
-calc_duration <- function(x = NULL, y = NULL, units = NA) {
+calc_duration <- function(x, y, units = NULL) {
 
   # Input type check
   if (
     !all(lubridate::is.timepoint(x), na.rm = TRUE) |
     !all(lubridate::is.timepoint(y), na.rm = TRUE)
   ) {
-    stop('\'x\' & \'y\' must be class < Date | POSIXt >')
+    stop('\'x\' and/or \'y\' not <date> or <datetime>.')
   }
 
   # Recycle single timepoint or throw error for mismatched sizes
@@ -63,7 +63,7 @@ calc_duration <- function(x = NULL, y = NULL, units = NA) {
   duration <- lubridate::as.duration(lubridate::interval(x, y))
 
   # Return data as appropriate type
-  if (!is.na(units)) as.numeric(duration, units)
+  if (!is.null(units)) as.numeric(duration, units)
   else duration
 
 }
