@@ -142,10 +142,10 @@ paste_efs <- function (x, times, percent.sign = TRUE, digits = 1) {
 #' @description
 #' An augmented version of \code{\link[base:paste]{base::paste()}} with options to
 #' manage NA values.
-#' @param ... Required. R objects to be converted to character vectors.
-#' @param sep Optional. Character. A string to separate the terms.
-#' @param collapse Optional. Character. An string to separate the results.
-#' @param na.rm Optional. Logical. Whether to remove NA values from 'x'.
+#' @param ... R objects to be converted to character vectors.
+#' @param sep A character. A string to separate the terms.
+#' @param collapse A character. An string to separate the results.
+#' @param na.rm A logical. Whether to remove NA values from 'x'.
 #' Note that NA values are also removed from vectors.
 #' @details The \code{\link[base:paste]{base::paste()}} function is intentionally
 #' designed to coarce NA values to characters that appear in the concatenated
