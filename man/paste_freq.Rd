@@ -29,17 +29,15 @@ tallies non-numeric data types (nrow or length) and supports vectorized data
 methods.
 }
 \examples{
-library(tibble)
-
 # Numeric
 paste_freq(20, 100)
 
 # Tibble
-data_tibble <- tibble(column = c(1:100))
-paste_freq(data_tibble[1:20,], data_tibble)
+df <- data.frame(x = c(1:100), y = TRUE)
+paste_freq(df[1:20,], df)
 
 # Mixed data types
-paste_freq(20, data_tibble)
+paste_freq(20, df)
 
 # Single denominator for multiple numerators
 paste_freq(c(10,20,30), 100)

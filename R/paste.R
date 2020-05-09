@@ -13,17 +13,15 @@
 #' @param digits Integer. Number of digits to round to.
 #' @return A character vector of count(s) with frequencies.
 #' @examples
-#' library(tibble)
-#'
 #' # Numeric
 #' paste_freq(20, 100)
 #'
 #' # Tibble
-#' data_tibble <- tibble(column = c(1:100))
-#' paste_freq(data_tibble[1:20,], data_tibble)
+#' df <- data.frame(x = c(1:100), y = TRUE)
+#' paste_freq(df[1:20,], df)
 #'
 #' # Mixed data types
-#' paste_freq(20, data_tibble)
+#' paste_freq(20, df)
 #'
 #' # Single denominator for multiple numerators
 #' paste_freq(c(10,20,30), 100)
@@ -34,13 +32,12 @@ paste_freq <- function(x, y, na.rm = TRUE, percent.sign = TRUE, digits = 1) {
   x <- .count_items(x, na.rm = na.rm)
   y <- .count_items(y, na.rm = na.rm)
 
-  # Hard stops
-  if (length(x) != length(y) & length(y) != 1)
-    stop('Numerator [\'x\'] and denominator [\'y\'] have incompatable lengths.')
+  # Recycle single counts or throw error for mixed types
+  common_counts <- vctrs::vec_recycle_common(x = x, y = y)
 
   # Create frequencies
-  purrr::map2_chr(
-    x, y,
+  purrr::pmap_chr(
+    common_counts,
     ~ {
       if (any(is.na(c(.x,.y))) | !any(is.numeric(c(.x,.y)))) as.character(NA)
       else {
@@ -48,7 +45,7 @@ paste_freq <- function(x, y, na.rm = TRUE, percent.sign = TRUE, digits = 1) {
           .x,
           ' (',
           round((.x / .y) * 100, digits = digits),
-          if (percent.sign & !is.infinite(.x / .y)) '%' else NULL,
+          if (percent.sign & !is.infinite(.x / .y)) '%',
           ')'
         )
       }
