@@ -9,15 +9,15 @@ test_hypothesis(x, y, parametric, digits, p.digits)
 \arguments{
 \item{x}{A numeric or factor. Observations.}
 
-\item{y}{A factor. Factor to stratify by.}
+\item{y}{A factor or logical. Categorical variable to stratify by.}
 
 \item{parametric}{A logical. Indicates parametric testing should be used.
-See note detailing statistical tests.}
+See note detailing statistical tests. Defaults to FALSE.}
 
-\item{digits}{An integer. Number of digits to round to.}
+\item{digits}{An integer. Number of digits to round to. Defaults to 1.}
 
 \item{p.digits}{An integer. Number of p-value digits to print. Note that
-p-values are still rounded using 'digits'.}
+p-values are still rounded using 'digits'. Defaults to 4.}
 }
 \value{
 A character formatted p-value.
