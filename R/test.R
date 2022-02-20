@@ -3,12 +3,12 @@
 #' Produces a p-value from parametric or non-parametric testing of the
 #' null hypothesis for stratified data.
 #' @param x A numeric or factor. Observations.
-#' @param y A factor. Factor to stratify by.
+#' @param y A factor or logical. Categorical variable to stratify by.
 #' @param parametric A logical. Indicates parametric testing should be used.
-#' See note detailing statistical tests.
-#' @param digits An integer. Number of digits to round to.
+#' See note detailing statistical tests. Defaults to FALSE.
+#' @param digits An integer. Number of digits to round to. Defaults to 1.
 #' @param p.digits An integer. Number of p-value digits to print. Note that
-#' p-values are still rounded using 'digits'.
+#' p-values are still rounded using 'digits'. Defaults to 4.
 #' @return A character formatted p-value.
 #' @note Statistical testing used is dependent on type of 'x' data, number of
 #' levels in the factor 'y', and whether parametric/non-parametric testing is
@@ -43,7 +43,7 @@ test_hypothesis.default <- function (...) as.character(NA)
 #' @export
 test_hypothesis.numeric <- function(x, y, parametric = FALSE, digits = 1, p.digits = 4) {
   unique_lvl <- vctrs::vec_size(stats::na.omit(unique(y[!is.na(x)])))
-  if (is.factor(y) & unique_lvl >= 2) {
+  if ((is.factor(y) | is.logical(y)) & unique_lvl >= 2) {
     pv <- if (unique_lvl == 2) {
       if (parametric) stats::t.test(x ~ y, alternative = 'two.sided')$p.value
       else stats::wilcox.test(x ~ y, alternative = 'two.sided')$p.value
