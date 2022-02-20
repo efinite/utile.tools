@@ -1,6 +1,8 @@
 # utile.tools 0.2.7
 * Fixed faulty class check in `test_hypothesis` and updated documentation for clarity.
 * Added `calc_cumsum` which provides additional NA handling when calculating cummulative sums.
+* Fixed LazyData CRAN error.
+* Added `dplyr` to suggests. 
 
 # utile.tools 0.2.6
 * The final tabulate function, `tabulate_at_risk`, has been removed after being internalized by `utile.visuals` package.
