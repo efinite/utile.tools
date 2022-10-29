@@ -1,3 +1,6 @@
+# utile.tools 0.2.8
+* Transitioned to `inherits` inside `paste_efs`.
+
 # utile.tools 0.2.7
 * Fixed faulty class check in `test_hypothesis` and updated documentation for clarity.
 * Added `calc_cumsum` which provides additional NA handling when calculating cummulative sums.

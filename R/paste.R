@@ -126,7 +126,7 @@ paste_mean <- function (x, less.than.one = FALSE, digits = 1) {
 paste_efs <- function (x, times, percent.sign = TRUE, digits = 1) {
   if (!all(is.numeric(times)) | vctrs::vec_is_empty(times)) {
     stop('\'times\' not <numeric> or is empty.')
-  } else if (class(x) != 'survfit' | !(x$type %in% c('right', 'left', 'interval'))) {
+  } else if (!inherits(x, 'survfit') | !(x$type %in% c('right', 'left', 'interval'))) {
     stop('\'x\' not <survfit> or fit does not estimate survival.')
   } else {
     results <- summary(x, times = times)
