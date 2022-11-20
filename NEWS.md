@@ -1,5 +1,6 @@
 # utile.tools 0.2.8
 * Transitioned to `inherits` inside `paste_efs`.
+* Fix to `calc_duration` casting for upcoming purrr 1.0.0 release (Thanks Hadley!)
 
 # utile.tools 0.2.7
 * Fixed faulty class check in `test_hypothesis` and updated documentation for clarity.
