@@ -54,9 +54,7 @@ calc_duration <- function(x, y, units = NULL) {
 
   # Remove timestamp if one variable is a Date object
   if (any(class(x) != class(y), na.rm = TRUE)) {
-    common_dates <- vctrs::allow_lossy_cast(
-      purrr::map(common_dates, vctrs::vec_cast, to = vctrs::new_date())
-    )
+    common_dates <- purrr::map(common_dates, as.Date)
   }
 
   # Calculate duration
