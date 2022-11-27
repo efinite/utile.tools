@@ -116,7 +116,7 @@ paste_mean <- function (x, less.than.one = FALSE, digits = 1) {
 #' @param percent.sign A logical. Indicates percent sign should be printed
 #' for frequencies.
 #' @param digits Integer. Number of digits to round to.
-#' @return A character vector of event free survival(s).
+#' @return A named character vector of event free survival(s).
 #' @examples
 #' library(survival)
 #'
@@ -129,11 +129,15 @@ paste_efs <- function (x, times, percent.sign = TRUE, digits = 1) {
   } else if (!inherits(x, 'survfit') | !(x$type %in% c('right', 'left', 'interval'))) {
     stop('\'x\' not <survfit> or fit does not estimate survival.')
   } else {
-    results <- summary(x, times = times)
-    estimate <- round(results$surv * 100, digits = digits)
-    lower <- round(results$lower * 100, digits = digits)
-    upper <- round(results$upper * 100, digits = digits)
-    paste0(estimate, if (percent.sign) '%', ' [', lower, '-', upper, ']')
+    res <- summary(x, times = times)[c('surv', 'lower', 'upper')]
+    res <- map(res, ~ round(.x * 100, digits = digits))
+    res <- pmap_chr(
+      res,
+      \(surv, lower, upper) {
+        paste0(surv, if (percent.sign) '%', ' [', lower, '-', upper, ']')
+      }
+    )
+    setNames(res, times)
   }
 }
 

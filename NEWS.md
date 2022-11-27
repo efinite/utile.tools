@@ -1,3 +1,6 @@
+# utile.tools <development>
+* `paste_efs` now sets the names of the returned vector using the times provided.
+
 # utile.tools 0.2.8
 * Transitioned to `inherits` inside `paste_efs`.
 * Fix to `calc_duration` casting for upcoming purrr 1.0.0 release (Thanks Hadley!)
