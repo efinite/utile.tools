@@ -39,7 +39,7 @@
 #'   y = mdy_hm(map_chr(sample(1:9, 5), ~ paste0('01/01/200', .x, ' 0', .x, ':00')))
 #' )
 #' @export
-calc_duration <- function(x, y, units = NULL) {
+calc_duration <- function (x, y, units = NULL) {
 
   # Input type check
   if (
@@ -84,7 +84,7 @@ calc_duration <- function(x, y, units = NULL) {
 #' # Iterate through chunks of data
 #' for (chunk in chunks) print(paste0(rownames(mtcars[chunk,]), collapse = ', '))
 #' @export
-calc_chunks <- function(x, size = 10, reverse = FALSE) {
+calc_chunks <- function (x, size = 10, reverse = FALSE) {
 
   # Hard stops
   if (!is.data.frame(x) & !is.vector(x))
@@ -119,6 +119,6 @@ calc_chunks <- function(x, size = 10, reverse = FALSE) {
 #' @export
 calc_cumsum <- function (x, na.fill = FALSE) {
   x <- replace(x, !is.na(x), cumsum(x[!is.na(x)]))
-  if (na.fill) x <- c(NA, x[!is.na(x)])[cumsum(!is.na(x)) + 1]
+  if (na.fill) x <- c(NA_real_, x[!is.na(x)])[cumsum(!is.na(x)) + 1]
   x
 }

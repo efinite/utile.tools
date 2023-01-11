@@ -19,7 +19,7 @@
 #' # Chunk #2 (rows 7-12)
 #' paste0(rownames(chunked_data()), collapse = ', ')
 #' @export
-chunk_data_ <- function(x, size = 10, reverse = FALSE) {
+chunk_data_ <- function (x, size = 10, reverse = FALSE) {
 
   # Calculate chunks & check hard stops
   chunks <- calc_chunks(x = x, size = size, reverse = reverse)

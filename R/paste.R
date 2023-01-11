@@ -39,7 +39,7 @@ paste_freq <- function (x, y, na.rm = TRUE, percent.sign = TRUE, digits = 1) {
   purrr::pmap_chr(
     common_counts,
     ~ {
-      if (any(is.na(c(.x,.y))) | !any(is.numeric(c(.x,.y)))) as.character(NA)
+      if (any(is.na(c(.x,.y))) | !any(is.numeric(c(.x,.y)))) NA_character_
       else {
         paste0(
           .x,
@@ -67,7 +67,7 @@ paste_freq <- function (x, y, na.rm = TRUE, percent.sign = TRUE, digits = 1) {
 #' paste_median(mtcars$mpg)
 #' @export
 paste_median <- function (x, less.than.one = FALSE, digits = 1) {
-  if (all(is.na(x)) | !all(is.numeric(x))) as.character(NA)
+  if (all(is.na(x)) | !all(is.numeric(x))) NA_character_
   else {
     estimate <- round(stats::median(x, na.rm = TRUE), digits = digits)
     precision <- round(
@@ -94,7 +94,7 @@ paste_median <- function (x, less.than.one = FALSE, digits = 1) {
 #' paste_mean(mtcars$mpg)
 #' @export
 paste_mean <- function (x, less.than.one = FALSE, digits = 1) {
-  if (all(is.na(x)) | !all(is.numeric(x))) as.character(NA)
+  if (all(is.na(x)) | !all(is.numeric(x))) NA_character_
   else {
     estimate <- round(mean(x, na.rm = TRUE), digits = digits)
     precision <- round(stats::sd(x, na.rm = TRUE), digits = digits)
@@ -130,14 +130,14 @@ paste_efs <- function (x, times, percent.sign = TRUE, digits = 1) {
     stop('\'x\' not <survfit> or fit does not estimate survival.')
   } else {
     res <- summary(x, times = times)[c('surv', 'lower', 'upper')]
-    res <- map(res, ~ round(.x * 100, digits = digits))
-    res <- pmap_chr(
+    res <- purrr::map(res, ~ round(.x * 100, digits = digits))
+    res <- purrr::pmap_chr(
       res,
       \(surv, lower, upper) {
         paste0(surv, if (percent.sign) '%', ' [', lower, '-', upper, ']')
       }
     )
-    setNames(res, times)
+    stats::setNames(res, times)
   }
 }
 
@@ -187,7 +187,7 @@ paste_pval <- function (x, digits = 1, p.digits = 4) {
 
 #' @rdname paste
 #' @export
-paste <- function(..., sep = ' ', collapse = NULL, na.rm = FALSE) {
+paste <- function (..., sep = ' ', collapse = NULL, na.rm = FALSE) {
   x <- list(..., sep = sep, collapse = collapse)
   if (na.rm) x <- purrr::map(x[!is.na(x)], ~ .x[!is.na(.x)])
   do.call(base::paste, x)
@@ -195,7 +195,7 @@ paste <- function(..., sep = ' ', collapse = NULL, na.rm = FALSE) {
 
 #' @rdname paste
 #' @export
-paste0 <- function(..., collapse = NULL, na.rm = FALSE) {
+paste0 <- function (..., collapse = NULL, na.rm = FALSE) {
   x <- list(..., collapse = collapse)
   if (na.rm) x <- purrr::map(x[!is.na(x)], ~ .x[!is.na(.x)])
   do.call(base::paste0, x)
