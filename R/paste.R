@@ -150,12 +150,6 @@ paste_efs <- function (x, times, percent.sign = TRUE, digits = 1) {
 #' @param sep A character. A string to separate the terms.
 #' @param collapse A character. An string to separate the results.
 #' @param na.rm A logical. Whether to remove NA values from 'x'.
-#' Note that NA values are also removed from vectors.
-#' @details The \code{\link[base:paste]{base::paste()}} function is intentionally
-#' designed to coarce NA values to characters that appear in the concatenated
-#' character output. This behavior is not always desirable (i.e. when programatically
-#' calling paste) and there is currently no means of opting out of this behavior.
-#' These augmented functions address this deficit.
 #' @return Character vector of concatenated values.
 #' @seealso \code{\link[base]{paste}}
 #' @examples
