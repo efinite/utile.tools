@@ -1,5 +1,7 @@
 # utile.tools <development>
 * `paste_efs` now sets the names of the returned vector using the times provided.
+* `test_hypothesis` has been overhauled to allow selection of the test to be used
+and return of a list which includes the test name.
 * P-value formatting has been moved into a new exported function `paste_pval`. 
 
 # utile.tools 0.2.8
