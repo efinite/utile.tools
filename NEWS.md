@@ -1,5 +1,6 @@
 # utile.tools <development>
 * `paste_efs` now sets the names of the returned vector using the times provided.
+* P-value formatting has been moved into a new exported function `paste_pval`. 
 
 # utile.tools 0.2.8
 * Transitioned to `inherits` inside `paste_efs`.
