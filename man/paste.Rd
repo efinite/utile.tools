@@ -22,19 +22,19 @@ paste0(..., collapse = NULL, na.rm = FALSE)
 Character vector of concatenated values.
 }
 \description{
-An augmented version of \code{\link[base:paste]{base::paste()}} with options to
-manage NA values.
+An augmented version of \code{\link[base:paste]{base::paste()}} with options
+to manage `NA` values.
 }
 \examples{
 # Base paste() NA handling behavior
 paste(
-  'The', c('red', NA, 'orange'), 'fox jumped', NA, 'over the fence.',
+  'The', c('red', NA_character_, 'orange'), 'fox jumped', NA_character_, 'over the fence.',
   collapse = ' '
 )
 
 # Removal of NA values
 paste(
-  'The', c('red', NA, 'orange'), 'fox jumped', NA, 'over the fence.',
+  'The', c('red', NA_character_, 'orange'), 'fox jumped', NA_character_, 'over the fence.',
   collapse = ' ',
   na.rm = TRUE
 )

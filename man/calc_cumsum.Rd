@@ -9,18 +9,18 @@ calc_cumsum(x, na.fill = FALSE)
 \arguments{
 \item{x}{A numeric.}
 
-\item{na.fill}{A logical. Impute forward for NA values.}
+\item{na.fill}{A logical. Impute forward for `NA` values.}
 }
 \value{
 A vector of the same length and type as x.
 }
 \description{
 Calculate the cumulative summation of a numeric vector with
-revised NA handling compared to `base::cumsum()`.
+revised `NA` handling compared to `base::cumsum()`.
 }
 \examples{
 x <- 1:10
-x[3:4] <- NA
+x[3:4] <- NA_real_
 
 # Calculate cumsum & replace NA values
 calc_cumsum(x, na.fill = TRUE)

@@ -1,6 +1,6 @@
 #' @title Paste frequency
 #' @description
-#' Creates a human-readable frequency from count(able) data. Automatically
+#' Creates a formatted frequency from count(able) data. Automatically
 #' tallies non-numeric data types (nrow or length) and supports vectorized data
 #' methods.
 #' @param x A data.frame, numeric, or non-numeric. The numerator.
@@ -57,7 +57,7 @@ paste_freq <- function (x, y, na.rm = TRUE, percent.sign = TRUE, digits = 1) {
 
 #' @title Paste median
 #' @description
-#' Creates a human-readable median with inter-quartile range from numeric data.
+#' Creates a formatted median with inter-quartile range from numeric data.
 #' @param x A numeric. Data to summarize.
 #' @param less.than.one A logical. Indicates a median that rounds to 0 should
 #' be printed as <1.
@@ -83,8 +83,7 @@ paste_median <- function (x, less.than.one = FALSE, digits = 1) {
 
 #' @title Paste mean
 #' @description
-#' Creates a human-readable mean with standard deviation
-#' from numeric data.
+#' Creates a formatted mean with standard deviation from numeric data.
 #' @param x A numeric. Data to summarize.
 #' @param less.than.one A logical. Indicates a mean that rounds to 0 should
 #' be printed as <1.
@@ -108,7 +107,7 @@ paste_mean <- function (x, less.than.one = FALSE, digits = 1) {
 
 #' @title Paste event-free survival
 #' @description
-#' Creates a human-readable event-free-survival from a survfit object
+#' Creates a formatted event-free-survival from a survfit object
 #' and a specified time point.
 #' @param x A \code{\link[survival]{survfit}} object. The survival model.
 #' @param times A numeric. Indicates time-points of interest. Units are whatever
@@ -116,7 +115,7 @@ paste_mean <- function (x, less.than.one = FALSE, digits = 1) {
 #' @param percent.sign A logical. Indicates percent sign should be printed
 #' for frequencies.
 #' @param digits Integer. Number of digits to round to.
-#' @return A named character vector of event free survival(s).
+#' @return A named character vector of event-free survival(s).
 #' @examples
 #' library(survival)
 #'
@@ -164,8 +163,8 @@ paste_pval <- function (x, digits = 1, p.digits = 4) {
 #' @name paste
 #' @title Concatenate strings
 #' @description
-#' An augmented version of \code{\link[base:paste]{base::paste()}} with options to
-#' manage NA values.
+#' An augmented version of \code{\link[base:paste]{base::paste()}} with options
+#' to manage `NA` values.
 #' @param ... R objects to be converted to character vectors.
 #' @param sep A character. A string to separate the terms.
 #' @param collapse A character. An string to separate the results.
@@ -175,13 +174,13 @@ paste_pval <- function (x, digits = 1, p.digits = 4) {
 #' @examples
 #' # Base paste() NA handling behavior
 #' paste(
-#'   'The', c('red', NA, 'orange'), 'fox jumped', NA, 'over the fence.',
+#'   'The', c('red', NA_character_, 'orange'), 'fox jumped', NA_character_, 'over the fence.',
 #'   collapse = ' '
 #' )
 #'
 #' # Removal of NA values
 #' paste(
-#'   'The', c('red', NA, 'orange'), 'fox jumped', NA, 'over the fence.',
+#'   'The', c('red', NA_character_, 'orange'), 'fox jumped', NA_character_, 'over the fence.',
 #'   collapse = ' ',
 #'   na.rm = TRUE
 #' )

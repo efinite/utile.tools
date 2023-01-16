@@ -24,7 +24,7 @@ with frequencies.}
 A character vector of count(s) with frequencies.
 }
 \description{
-Creates a human-readable frequency from count(able) data. Automatically
+Creates a formatted frequency from count(able) data. Automatically
 tallies non-numeric data types (nrow or length) and supports vectorized data
 methods.
 }

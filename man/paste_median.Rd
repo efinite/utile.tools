@@ -18,7 +18,7 @@ be printed as <1.}
 A character vector of the median(s) with interquartile range(s).
 }
 \description{
-Creates a human-readable median with inter-quartile range from numeric data.
+Creates a formatted median with inter-quartile range from numeric data.
 }
 \examples{
 paste_median(mtcars$mpg)

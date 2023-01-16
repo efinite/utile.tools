@@ -18,10 +18,10 @@ for frequencies.}
 \item{digits}{Integer. Number of digits to round to.}
 }
 \value{
-A named character vector of event free survival(s).
+A named character vector of event-free survival(s).
 }
 \description{
-Creates a human-readable event-free-survival from a survfit object
+Creates a formatted event-free-survival from a survfit object
 and a specified time point.
 }
 \examples{

@@ -18,8 +18,7 @@ be printed as <1.}
 A character vector of the mean(s) with standard deviation(s).
 }
 \description{
-Creates a human-readable mean with standard deviation
-from numeric data.
+Creates a formatted mean with standard deviation from numeric data.
 }
 \examples{
 paste_mean(mtcars$mpg)

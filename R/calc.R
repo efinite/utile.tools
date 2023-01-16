@@ -106,13 +106,13 @@ calc_chunks <- function (x, size = 10, reverse = FALSE) {
 #' @title Calculate cumulative summation of vector
 #' @description
 #' Calculate the cumulative summation of a numeric vector with
-#' revised NA handling compared to `base::cumsum()`.
+#' revised `NA` handling compared to `base::cumsum()`.
 #' @param x A numeric.
-#' @param na.fill A logical. Impute forward for NA values.
+#' @param na.fill A logical. Impute forward for `NA` values.
 #' @return A vector of the same length and type as x.
 #' @examples
 #' x <- 1:10
-#' x[3:4] <- NA
+#' x[3:4] <- NA_real_
 #'
 #' # Calculate cumsum & replace NA values
 #' calc_cumsum(x, na.fill = TRUE)
