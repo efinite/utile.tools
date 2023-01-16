@@ -12,7 +12,7 @@ Supports vectorized data (i.e. dplyr::mutate())."><!-- mathjax --><script src="h
     
     <a class="navbar-brand me-2" href="../index.html">utile.tools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.8</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,23 +107,23 @@ passing that would otherwise come with casting the date data to datetime.</p>
 <span class="r-in"><span>  y <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html" class="external-link">mdy</a></span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, <span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="paste.html">paste0</a></span><span class="op">(</span><span class="st">'01/01/200'</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  units <span class="op">=</span> <span class="st">'years'</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 14.001369 11.000684 16.999316  7.000684 12.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 13.998631 10.001369 12.000000 10.001369  4.999316</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># datetimes -&gt; durations</span></span></span>
 <span class="r-in"><span><span class="fu">calc_duration</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  x <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd_hms.html" class="external-link">mdy_hm</a></span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, <span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="paste.html">paste0</a></span><span class="op">(</span><span class="st">'01/01/199'</span>, <span class="va">.x</span>, <span class="st">' 1'</span>, <span class="va">.x</span>, <span class="st">':00'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  y <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd_hms.html" class="external-link">mdy_hm</a></span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, <span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="paste.html">paste0</a></span><span class="op">(</span><span class="st">'01/01/200'</span>, <span class="va">.x</span>, <span class="st">' 0'</span>, <span class="va">.x</span>, <span class="st">':00'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "378662400s (~12 years)" "347036400s (~11 years)" "252417600s (~8 years)" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "536533200s (~17 years)" "189338400s (~6 years)" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "410288400s (~13 years)" "315583200s (~10 years)" "441741600s (~14 years)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "220878000s (~7 years)"  "315496800s (~10 years)"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Mixed date classes -&gt; durations</span></span></span>
 <span class="r-in"><span><span class="fu">calc_duration</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  x <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html" class="external-link">mdy</a></span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, <span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="paste.html">paste0</a></span><span class="op">(</span><span class="st">'01/01/199'</span>, <span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  y <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd_hms.html" class="external-link">mdy_hm</a></span><span class="op">(</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map_chr</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html" class="external-link">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>, <span class="fl">5</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="paste.html">paste0</a></span><span class="op">(</span><span class="st">'01/01/200'</span>, <span class="va">.x</span>, <span class="st">' 0'</span>, <span class="va">.x</span>, <span class="st">':00'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "536576400s (~17 years)" "347176800s (~11 years)" "94701600s (~3 years)"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "315622800s (~10 years)" "220852800s (~7 years)" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "220935600s (~7 years)"  "126234000s (~4 years)"  "378712800s (~12 years)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [4] "378705600s (~12 years)" "126237600s (~4 years)" </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
