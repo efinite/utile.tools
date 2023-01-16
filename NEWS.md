@@ -5,11 +5,13 @@
 * `test_hypothesis()` has been overhauled to allow selection of the test to be used
 and return of a list which includes the test name.
 
-# New Features
+## New Features
 
 * P-value formatting has been moved to an exported function, `paste_pval()`.
 
-# Fixes & Minor Changes
+* Created a `pkgdown` website for the package.
+
+## Fixes & Minor Changes
 * `paste_efs` now sets the names of the returned vector using the times provided.
 
 
