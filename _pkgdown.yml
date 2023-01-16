@@ -1,0 +1,24 @@
+url: ~
+template:
+  bootstrap: 5
+reference:
+  - title: "Calculate"
+    contents:
+      - calc_duration
+      - calc_chunks
+      - calc_cumsum
+  - title: "Chunk"
+    contents:
+      - chunk_data_
+  - title: "Paste"
+    contents:
+      - paste
+      - paste0
+      - paste_freq
+      - paste_mean
+      - paste_median
+      - paste_efs
+      - paste_pval
+  - title: "Test"
+    contents:
+      - test_hypothesis
