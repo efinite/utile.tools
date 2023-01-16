@@ -1,3 +1,4 @@
+#' @name test_hypothesis
 #' @title Test the null hypothesis
 #' @description Tests the null hypothesis that there is no difference between
 #' grouped data.
@@ -5,25 +6,33 @@
 #' @param y A factor or logical. Categorical "by" grouping variable.
 #' @param test A character. Name of the statistical test to use. See note.
 #' @param digits An integer. Number of digits to round to.
-#' @param p.digits An integer. Minimum number of p-value digits to the right of
+#' @param p.digits An integer. The number of p-value digits to the right of
 #' the decimal point. Note that p-values are still rounded using 'digits'.
+#' @param simulate.p.value A logical. Whether p-values in nominal variable testing
+#' should be computed with Monte Carlo simulation.
+#' @param B An integer. Number of replicates to use in Monte Carlo simulation for
+#' nominal testing.
+#' @param workspace An integer. Size of the workspace used for the Fisher's Exact
+#' Test network algorithm.
 #' @param ... Additional arguments passed to the appropriate S3 method.
 #' @return A list containing the statistical test performed, test statistic,
 #' and p-value.
-#' @details Statistical testing used is dependent on type of 'x' data. Supported
+#' @note Statistical testing used is dependent on type of 'x' data. Supported
 #' testing for numeric data includes ANOVA ('anova'), Kruskal-Wallis ('kruskal'),
 #' and Wilcoxon Rank Sum ('wilcoxon') tests. For categorical data, supported
 #' testings includes Pearson's Chi-squared ('chisq') and Fisher's Exact Test
 #' ('fisher').
-#' @seealso \code{\link{test_hypothesis.numeric}},
-#' \code{\link{test_hypothesis.factor}},
-#' \code{\link{test_hypothesis.logical}}
 #' @examples
 #' strata <- as.factor(mtcars$cyl)
 #'
-#' test_hypothesis(mtcars$mpg, strata) # numeric
-#' test_hypothesis(as.logical(mtcars$vs), strata) # logical
-#' test_hypothesis(as.factor(mtcars$carb), strata) # factor
+#' # Numeric data
+#' test_hypothesis(mtcars$mpg, strata)
+#'
+#' # Logical data
+#' test_hypothesis(as.logical(mtcars$vs), strata)
+#'
+#' # Factor data
+#' test_hypothesis(as.factor(mtcars$carb), strata)
 #' @export
 test_hypothesis <- function (
     x,
@@ -31,6 +40,9 @@ test_hypothesis <- function (
     test,
     digits,
     p.digits,
+    simulate.p.value,
+    B,
+    workspace,
     ...
   ) {
     UseMethod('test_hypothesis')
@@ -42,19 +54,7 @@ test_hypothesis <- function (
 test_hypothesis.default <- function (...) NA_character_
 
 
-#' @title Test Hypothesis: Numeric
-#' @param x A numeric. Observations.
-#' @param y A factor or logical. Categorical "by" grouping variable.
-#' @param test A character. Name of the statistical test to use. Supported tests
-#' include ANOVA linear model ('anova'), kruskal-wallis ('kruskal'), and wilcoxon
-#' rank sum tests ('wilcoxon').
-#' @param digits An integer. Number of digits to round to.
-#' @param p.digits An integer. Minimum number of p-value digits to the right of
-#' the decimal point. Note that p-values are still rounded using 'digits'.
-#' @param ... Additional arguments passed to S3 method.
-#' @return A list containing the statistical test performed, test statistic,
-#' and p-value.
-#' @seealso \code{\link{test_hypothesis}}
+#' @rdname test_hypothesis
 #' @export
 test_hypothesis.numeric <-
   function (
@@ -119,23 +119,7 @@ test_hypothesis.numeric <-
 }
 
 
-#' @title Test Hypothesis: Factor
-#' @param x A factor. Observations.
-#' @param y A factor or logical. Categorical "by" grouping variable.
-#' @param test A character. Name of the statistical test to use. Supported tests
-#' include Pearson's Chi-squared Test ('chisq') and Fisher's Exact Test ('fisher').
-#' @param digits An integer. Number of digits to round to.
-#' @param p.digits An integer. Minimum number of p-value digits to the right of
-#' the decimal point. Note that p-values are still rounded using 'digits'.
-#' @param simulate.p.value A logical. Whether p-values in nominal variable testing
-#' should be computed with Monte Carlo simulation.
-#' @param B An integer. Number of replicates to use in Monte Carlo simulation.
-#' @param workspace An integer. Size of the workspace used for the Fisher's Exact
-#' Test network algorhythm.
-#' @param ... Additional arguments passed to S3 method.
-#' @return A list containing the statistical test performed, test statistic,
-#' and p-value.
-#' @seealso \code{\link{test_hypothesis}}
+#' @rdname test_hypothesis
 #' @export
 test_hypothesis.factor <-
   function (
@@ -213,22 +197,6 @@ test_hypothesis.factor <-
   }
 
 
-#' @title Test Hypothesis: Logical
-#' @param x A logical. Observations.
-#' @param y A factor or logical. Categorical "by" grouping variable.
-#' @param test A character. Name of the statistical test to use. Supported tests
-#' include Pearson's Chi-squared Test ('chisq') and Fisher's Exact Test ('fisher').
-#' @param digits An integer. Number of digits to round to.
-#' @param p.digits An integer. Minimum number of p-value digits to the right of
-#' the decimal point. Note that p-values are still rounded using 'digits'.
-#' @param simulate.p.value A logical. Whether p-values in nominal variable testing
-#' should be computed with Monte Carlo simulation.
-#' @param B An integer. Number of replicates to use in Monte Carlo simulation.
-#' @param workspace An integer. Size of the workspace used for the Fisher's Exact
-#' Test network algorhythm.
-#' @param ... Additional arguments passed to S3 method.
-#' @return A list containing the statistical test performed, test statistic,
-#' and p-value.
-#' @seealso \code{\link{test_hypothesis}}
+#' @rdname test_hypothesis
 #' @export
 test_hypothesis.logical <- test_hypothesis.factor

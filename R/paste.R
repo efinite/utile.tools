@@ -149,7 +149,8 @@ paste_efs <- function (x, times, percent.sign = TRUE, digits = 1) {
 #' @param digits A numeric. Number of significant digits to round to.
 #' @param p.digits A numeric. Minimum number of digits to right of the decimal
 #' point.
-#' @example paste_pval(6.112687e-10)
+#' @examples
+#' paste_pval(0.061126e-10)
 #' @export
 paste_pval <- function (x, digits = 1, p.digits = 4) {
   format.pval(pv = x,

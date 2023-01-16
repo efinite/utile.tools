@@ -17,3 +17,6 @@ point.}
 \description{
 Creates a human-readable p.value using sensible defaults for `format.pval()`.
 }
+\examples{
+paste_pval(0.061126e-10)
+}

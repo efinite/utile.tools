@@ -2,9 +2,55 @@
 % Please edit documentation in R/test.R
 \name{test_hypothesis}
 \alias{test_hypothesis}
+\alias{test_hypothesis.numeric}
+\alias{test_hypothesis.factor}
+\alias{test_hypothesis.logical}
 \title{Test the null hypothesis}
 \usage{
-test_hypothesis(x, y, test, digits, p.digits, ...)
+test_hypothesis(
+  x,
+  y,
+  test,
+  digits,
+  p.digits,
+  simulate.p.value,
+  B,
+  workspace,
+  ...
+)
+
+\method{test_hypothesis}{numeric}(
+  x,
+  y,
+  test = c("anova", "kruskal", "wilcoxon"),
+  digits = 1,
+  p.digits,
+  ...
+)
+
+\method{test_hypothesis}{factor}(
+  x,
+  y,
+  test = c("chisq", "fisher"),
+  digits = 1,
+  p.digits,
+  simulate.p.value = FALSE,
+  B = 2000,
+  workspace = 2e+07,
+  ...
+)
+
+\method{test_hypothesis}{logical}(
+  x,
+  y,
+  test = c("chisq", "fisher"),
+  digits = 1,
+  p.digits,
+  simulate.p.value = FALSE,
+  B = 2000,
+  workspace = 2e+07,
+  ...
+)
 }
 \arguments{
 \item{x}{A numeric, factor, or logical. Observations.}
@@ -15,8 +61,17 @@ test_hypothesis(x, y, test, digits, p.digits, ...)
 
 \item{digits}{An integer. Number of digits to round to.}
 
-\item{p.digits}{An integer. Minimum number of p-value digits to the right of
+\item{p.digits}{An integer. The number of p-value digits to the right of
 the decimal point. Note that p-values are still rounded using 'digits'.}
+
+\item{simulate.p.value}{A logical. Whether p-values in nominal variable testing
+should be computed with Monte Carlo simulation.}
+
+\item{B}{An integer. Number of replicates to use in Monte Carlo simulation for
+nominal testing.}
+
+\item{workspace}{An integer. Size of the workspace used for the Fisher's Exact
+Test network algorithm.}
 
 \item{...}{Additional arguments passed to the appropriate S3 method.}
 }
@@ -28,7 +83,7 @@ and p-value.
 Tests the null hypothesis that there is no difference between
 grouped data.
 }
-\details{
+\note{
 Statistical testing used is dependent on type of 'x' data. Supported
 testing for numeric data includes ANOVA ('anova'), Kruskal-Wallis ('kruskal'),
 and Wilcoxon Rank Sum ('wilcoxon') tests. For categorical data, supported
@@ -38,12 +93,12 @@ testings includes Pearson's Chi-squared ('chisq') and Fisher's Exact Test
 \examples{
 strata <- as.factor(mtcars$cyl)
 
-test_hypothesis(mtcars$mpg, strata) # numeric
-test_hypothesis(as.logical(mtcars$vs), strata) # logical
-test_hypothesis(as.factor(mtcars$carb), strata) # factor
-}
-\seealso{
-\code{\link{test_hypothesis.numeric}},
-\code{\link{test_hypothesis.factor}},
-\code{\link{test_hypothesis.logical}}
+# Numeric data
+test_hypothesis(mtcars$mpg, strata)
+
+# Logical data
+test_hypothesis(as.logical(mtcars$vs), strata)
+
+# Factor data
+test_hypothesis(as.factor(mtcars$carb), strata)
 }

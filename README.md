@@ -3,22 +3,27 @@
 [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/utile.tools)](https://CRAN.R-project.org/package=utile.tools)
 
 ## Overview
-Tools for preparing and summarizing data for publication purposes. Includes functions for tabulating models, producing human-readable summary statistics from raw data, macros for calculating duration of time, and simplistic hypothesis testing tools.
+Tools for formatting and summarizing data for publication.
 
 ## Verbs
 ### Paste
-- `paste()` & `paste0`: The base functions with an added 'na.rm' parameter for nested NA removal. Default function behavior is identical to base counterparts.
-- `paste_freq()`: Pastes a human-readable frequency from count(able) data. Handily has methods for several types of data.
-- `paste_median()`: Pastes a human-readable median with inter-quartile range from numeric data.
-- `paste_mean()`: Pastes a human-readable mean with standard deviation from numeric data.
-- `paste_efs()`: Pastes a human-readable event-free-survival from a survfit object and a specified time point.
+- `paste()` & `paste0()`: The base functions with an 'na.rm' parameter for nested NA removal.
+- `paste_freq()`: Pastes a formatted frequency from count(able) data.
+- `paste_median()`: Pastes a formatted median with inter-quartile range from numeric data.
+- `paste_mean()`: Pastes a formatted mean with standard deviation from numeric data.
+- `paste_efs()`: Pastes a formatted event-free survival from a survfit object.
+- `paste_pval()`: Pastes a formatted p-value from a numeric.
 
 ### Calc
-- `calc_duration()`: Calculates the duration of time between two provided date objects. Essentially a macro of `lubridate::` functions with extra logic built in.
-- `calc_chunks()`: Calculates mapped "chunk" indices for a data object given a specified chunk size (e.g. number of rows in a tibble).
+- `calc_duration()`: Calculates the duration between two date objects. This is a
+macro of `lubridate::` functions with additional logic.
+- `calc_chunks()`: Calculates mapped "chunk" indices for a data object given a
+specified chunk size (e.g. number of rows in a data.frame).
 
 ### Test
-- `test_hypothesis()`: Retrieves a p-value from null hypothesis testing of stratified continuous or categorical data. Provides parametric and non-parametric testing options (see docs).
+- `test_hypothesis()`: Facilitates null hypothesis testing of continuous or nominal
+data and returns a list containing test results.
 
 ### Chunk
-- `chunk_data_()`: Creates a factory function which returns chunks of a given data object (table, vector) with successive function calls.
+- `chunk_data_()`: Creates a factory function which returns chunks of a given
+data object (table, vector) with successive function calls.
