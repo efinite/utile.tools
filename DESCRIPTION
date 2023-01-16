@@ -4,7 +4,7 @@ Version: 0.2.8
 Description: Tools for formatting and summarizing data for publication.
 Authors@R: c(person('Eric', 'Finnesgard', email = 'efinite@outlook.com', role = c('aut', 'cre')))
 License: LGPL (>= 2)
-URL: https://github.com/efinite/utile.tools
+URL: https://efinite.github.io/utile.tools/
 BugReports: https://github.com/efinite/utile.tools/issues
 Encoding: UTF-8
 Depends:

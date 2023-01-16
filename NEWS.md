@@ -9,10 +9,11 @@ and return of a list which includes the test name.
 
 * P-value formatting has been moved to an exported function, `paste_pval()`.
 
-* Created a `pkgdown` website for the package.
-
 ## Fixes & Minor Changes
+
 * `paste_efs` now sets the names of the returned vector using the times provided.
+
+* Created a `pkgdown` website for the package.
 
 
 # utile.tools 0.2.8
