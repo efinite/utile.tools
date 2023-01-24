@@ -15,5 +15,6 @@ Imports:
   vctrs
 Suggests:
   survival,
-  dplyr
+  dplyr,
+  ggplot2
 RoxygenNote: 7.2.3

@@ -5,7 +5,11 @@
 * `test_hypothesis()` has been overhauled to allow selection of the test to be used
 and return of a list which includes the test name.
 
+* The `calc_cumsum()` function has been removed.
+
 ## New Features
+
+* Introduced functions to facility creation of CUSUM charts. These include `cusum_failure()`, `cusum_loglike()`, `cusum_ome()`, and `cusum_sprt()`.
 
 * P-value formatting has been moved to an exported function, `paste_pval()`.
 

@@ -101,24 +101,3 @@ calc_chunks <- function (x, size = 10, reverse = FALSE) {
   else purrr::map(1:ceiling(item_cnt / size), ~ (item_cnt-(.x-1)*size):max(1, item_cnt-(.x*size)+1))
 
 }
-
-
-#' @title Calculate cumulative summation of vector
-#' @description
-#' Calculate the cumulative summation of a numeric vector with
-#' revised `NA` handling compared to `base::cumsum()`.
-#' @param x A numeric.
-#' @param na.fill A logical. Impute forward for `NA` values.
-#' @return A vector of the same length and type as x.
-#' @examples
-#' x <- 1:10
-#' x[3:4] <- NA_real_
-#'
-#' # Calculate cumsum & replace NA values
-#' calc_cumsum(x, na.fill = TRUE)
-#' @export
-calc_cumsum <- function (x, na.fill = FALSE) {
-  x <- replace(x, !is.na(x), cumsum(x[!is.na(x)]))
-  if (na.fill) x <- c(NA_real_, x[!is.na(x)])[cumsum(!is.na(x)) + 1]
-  x
-}
