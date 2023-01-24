@@ -12,7 +12,7 @@ Functions such as `paste_freq()` and `paste_mean()`, which return formatted stat
 Convenience functions for frequently used calculations, such as the duration of time between two date objects with `calc_duration()`.
 
 ### cusum_
-Functions which take a dichotomous procedure outcome and return a prepared data for graphing CUSUM curves. Available options range from simple cumulative sum of failures with `cusum_failure()` to risk-adjusted sequential probability ratio tests with `cusum_sprt()`.
+Functions which take a dichotomous procedure outcome and return prepared data for producing CUSUM curves. Available options range from simple cumulative sum of failures with `cusum_failure()` to risk-adjusted sequential probability ratio tests with `cusum_sprt()`.
 
 ### test_
 Simple null hypothesis testing of stratified continuous or nominal data with the `test_hypothesis()` function. Returns a list containing test results.
