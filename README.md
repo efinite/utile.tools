@@ -3,10 +3,10 @@
 [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/utile.tools)](https://CRAN.R-project.org/package=utile.tools)
 
 ## Overview
-Convenience functions for formatting and summarizing data for outcomes research.
+Convenience utilities for formatting and summarizing data for outcomes research.
 
 ### paste_
-Functions, such as `paste_freq()` and `paste_mean()`, which return formatted statistics for publication writing.
+Functions such as `paste_freq()` and `paste_mean()`, which return formatted statistics for writing.
 
 ### calc_
 Convenience functions for frequently used calculations, such as the duration of time between two date objects with `calc_duration()`.
