@@ -1,7 +1,7 @@
 Package: utile.tools
 Title: Summarize Data for Publication
-Version: 0.2.8
-Description: Tools for formatting and summarizing data for publication.
+Version: 0.3.0
+Description: Tools for formatting and summarizing data for outcomes research.
 Authors@R: c(person('Eric', 'Finnesgard', email = 'efinite@outlook.com', role = c('aut', 'cre')))
 License: LGPL (>= 2)
 URL: https://efinite.github.io/utile.tools/
