@@ -2,8 +2,7 @@
 
 ## Breaking Changes
 
-* `test_hypothesis()` has been overhauled to allow selection of the test to be used
-and return of a list which includes the test name.
+* `test_hypothesis()` has been overhauled to allow selection of the test to be used and return of a list which includes the test name.
 
 * The `calc_cumsum()` function has been removed.
 
@@ -15,7 +14,9 @@ and return of a list which includes the test name.
 
 ## Fixes & Minor Changes
 
-* `paste_efs` now sets the names of the returned vector using the times provided.
+* `ggplot2` added as a suggested dependency.
+
+* `paste_efs()` now sets the names of the returned vector using the times provided.
 
 * Created a `pkgdown` website for the package.
 

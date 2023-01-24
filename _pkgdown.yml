@@ -6,11 +6,7 @@ reference:
     contents:
       - calc_duration
       - calc_chunks
-      - calc_cumsum
-  - title: "Chunk"
-    contents:
-      - chunk_data_
-  - title: "Paste"
+  - title: "Format"
     contents:
       - paste
       - paste0
@@ -22,3 +18,12 @@ reference:
   - title: "Test"
     contents:
       - test_hypothesis
+  - title: "Cummulative Sum"
+    contents:
+      - cusum_failure
+      - cusum_loglike
+      - cusum_ome
+      - cusum_sprt
+  - title: "Miscellaneous"
+    contents:
+      - chunk_data_

@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="Tools for formatting and summarizing data for publication.">
+<meta name="description" content="Tools for formatting and summarizing data for outcomes research.">
 <title>Summarize Data for Publication • utile.tools</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Summarize Data for Publication">
-<meta property="og:description" content="Tools for formatting and summarizing data for publication.">
+<meta property="og:description" content="Tools for formatting and summarizing data for outcomes research.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">utile.tools</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,54 +67,26 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>Tools for formatting and summarizing data for publication.</p>
+<p>Convenience functions for formatting and summarizing data for outcomes research.</p>
+<div class="section level3">
+<h3 id="paste_">paste_<a class="anchor" aria-label="anchor" href="#paste_"></a>
+</h3>
+<p>Functions, such as <code><a href="reference/paste_freq.html">paste_freq()</a></code> and <code><a href="reference/paste_mean.html">paste_mean()</a></code>, which return formatted statistics for publication writing.</p>
+</div>
+<div class="section level3">
+<h3 id="calc_">calc_<a class="anchor" aria-label="anchor" href="#calc_"></a>
+</h3>
+<p>Convenience functions for frequently used calculations, such as the duration of time between two date objects with <code><a href="reference/calc_duration.html">calc_duration()</a></code>.</p>
+</div>
 </div>
 <div class="section level2">
-<h2 id="verbs">Verbs<a class="anchor" aria-label="anchor" href="#verbs"></a>
+<h2 id="cusum_">cusum_<a class="anchor" aria-label="anchor" href="#cusum_"></a>
 </h2>
+<p>Functions which take a dichotomous procedure outcome and return a prepared data for graphing CUSUM curves. Available options range from simple cumulative sum of failures with <code><a href="reference/cusum_failure.html">cusum_failure()</a></code> to risk-adjusted sequential probability ratio tests with <code><a href="reference/cusum_sprt.html">cusum_sprt()</a></code>.</p>
 <div class="section level3">
-<h3 id="paste">Paste<a class="anchor" aria-label="anchor" href="#paste"></a>
+<h3 id="test_">test_<a class="anchor" aria-label="anchor" href="#test_"></a>
 </h3>
-<ul>
-<li>
-<code><a href="reference/paste.html">paste()</a></code> &amp; <code><a href="reference/paste.html">paste0()</a></code>: The base functions with an ‘na.rm’ parameter for nested NA removal.</li>
-<li>
-<code><a href="reference/paste_freq.html">paste_freq()</a></code>: Pastes a formatted frequency from count(able) data.</li>
-<li>
-<code><a href="reference/paste_median.html">paste_median()</a></code>: Pastes a formatted median with inter-quartile range from numeric data.</li>
-<li>
-<code><a href="reference/paste_mean.html">paste_mean()</a></code>: Pastes a formatted mean with standard deviation from numeric data.</li>
-<li>
-<code><a href="reference/paste_efs.html">paste_efs()</a></code>: Pastes a formatted event-free survival from a survfit object.</li>
-<li>
-<code><a href="reference/paste_pval.html">paste_pval()</a></code>: Pastes a formatted p-value from a numeric.</li>
-</ul>
-</div>
-<div class="section level3">
-<h3 id="calc">Calc<a class="anchor" aria-label="anchor" href="#calc"></a>
-</h3>
-<ul>
-<li>
-<code><a href="reference/calc_duration.html">calc_duration()</a></code>: Calculates the duration between two date objects. This is a macro of <code>lubridate::</code> functions with additional logic.</li>
-<li>
-<code><a href="reference/calc_chunks.html">calc_chunks()</a></code>: Calculates mapped “chunk” indices for a data object given a specified chunk size (e.g. number of rows in a data.frame).</li>
-</ul>
-</div>
-<div class="section level3">
-<h3 id="test">Test<a class="anchor" aria-label="anchor" href="#test"></a>
-</h3>
-<ul>
-<li>
-<code><a href="reference/test_hypothesis.html">test_hypothesis()</a></code>: Facilitates null hypothesis testing of continuous or nominal data and returns a list containing test results.</li>
-</ul>
-</div>
-<div class="section level3">
-<h3 id="chunk">Chunk<a class="anchor" aria-label="anchor" href="#chunk"></a>
-</h3>
-<ul>
-<li>
-<code><a href="reference/chunk_data_.html">chunk_data_()</a></code>: Creates a factory function which returns chunks of a given data object (table, vector) with successive function calls.</li>
-</ul>
+<p>Simple null hypothesis testing of stratified continuous or nominal data with the <code><a href="reference/test_hypothesis.html">test_hypothesis()</a></code> function. Returns a list containing test results.</p>
 </div>
 </div>
 </div>

@@ -3,27 +3,16 @@
 [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/utile.tools)](https://CRAN.R-project.org/package=utile.tools)
 
 ## Overview
-Tools for formatting and summarizing data for publication.
+Convenience functions for formatting and summarizing data for outcomes research.
 
-## Verbs
-### Paste
-- `paste()` & `paste0()`: The base functions with an 'na.rm' parameter for nested NA removal.
-- `paste_freq()`: Pastes a formatted frequency from count(able) data.
-- `paste_median()`: Pastes a formatted median with inter-quartile range from numeric data.
-- `paste_mean()`: Pastes a formatted mean with standard deviation from numeric data.
-- `paste_efs()`: Pastes a formatted event-free survival from a survfit object.
-- `paste_pval()`: Pastes a formatted p-value from a numeric.
+### paste_
+Functions, such as `paste_freq()` and `paste_mean()`, which return formatted statistics for publication writing.
 
-### Calc
-- `calc_duration()`: Calculates the duration between two date objects. This is a
-macro of `lubridate::` functions with additional logic.
-- `calc_chunks()`: Calculates mapped "chunk" indices for a data object given a
-specified chunk size (e.g. number of rows in a data.frame).
+### calc_
+Convenience functions for frequently used calculations, such as the duration of time between two date objects with `calc_duration()`.
 
-### Test
-- `test_hypothesis()`: Facilitates null hypothesis testing of continuous or nominal
-data and returns a list containing test results.
+## cusum_
+Functions which take a dichotomous procedure outcome and return a prepared data for graphing CUSUM curves. Available options range from simple cumulative sum of failures with `cusum_failure()` to risk-adjusted sequential probability ratio tests with `cusum_sprt()`.
 
-### Chunk
-- `chunk_data_()`: Creates a factory function which returns chunks of a given
-data object (table, vector) with successive function calls.
+### test_
+Simple null hypothesis testing of stratified continuous or nominal data with the `test_hypothesis()` function. Returns a list containing test results.
